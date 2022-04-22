@@ -4,7 +4,7 @@
 <footer>
 	<div class="footer-search">
 		<h3>Search</h3>
-		<form role="search" method="get" class="search-form" action="https://www.stevefenton.co.uk/">
+		<form role="search" method="get" class="search-form" action="/">
 			<label><span class="screen-reader-text">Search for:</span>
 			<input type="search" class="search-field" placeholder="Search …" value="" name="s">
 			</label>
