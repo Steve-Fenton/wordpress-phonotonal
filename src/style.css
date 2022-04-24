@@ -289,6 +289,11 @@ footer li a {
 
 /* Tables */
 
+figcaption {
+  text-align: center;
+  font-style: italic;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -512,6 +517,64 @@ strong {
   width: 15px;
   content: '';
   top: 5px;
+}
+
+/* Gallery */
+
+.gallery img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gallery figure {
+  height: 100%;
+  position: relative;
+  border: unset;
+}
+
+.gx2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4px;
+}
+
+.gx3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.gx3l {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "large large ."
+    "large large .";
+  grid-gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.gx3l>:first-child {
+  grid-area: large;
+}
+
+.gx3r {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    ". large large"
+    ". large large";
+  grid-gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.gx3r>:last-child {
+  grid-area: large;
 }
 
 /* Other Styles */
