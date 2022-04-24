@@ -94,7 +94,7 @@ blockquote {
   background: var(--blockquote);
   color: var(--blocktext);
   border-left: 1em solid var(--funk);
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin: 1.5em 0;
   padding: 1em;
   quotes: "“" "”";
