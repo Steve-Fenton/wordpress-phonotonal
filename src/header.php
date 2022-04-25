@@ -5,7 +5,7 @@ header('X-Frame-Options: SAMEORIGIN');
 <html lang="en" dir="ltr">
 <head <?php language_attributes(); ?>>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php wp_title(''); ?> | <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></title>
+	<title><?php wp_title(''); ?></title>
 	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="Steve Fenton">
 	<meta name="msapplication-TileColor" content="#6C94C7"/>
