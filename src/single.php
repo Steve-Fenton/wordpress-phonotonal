@@ -5,9 +5,9 @@
 get_header(); ?>
 <!-- *single* -->
 	<?php
-		$image = get_the_post_thumbnail_url();
 		$thumbnail_id = get_post_thumbnail_id( $post->ID );
 		$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+		$image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
 	?>
 	<div class="bgfonk" style="background-image: url('<?php echo $image ?>');">
 		<main class="single-item">

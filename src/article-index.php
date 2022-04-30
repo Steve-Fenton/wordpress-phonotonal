@@ -3,12 +3,13 @@
 		<article class="listing-item">
 			<?php
 			$title = get_the_title();
+			$alt = str_replace('"', '', $title);
 			$title = str_replace( ' - ', '<br />',  $title );
 			?>
 
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="funky-title">
-			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('medium'); ?>" alt="" /></a>
+			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php echo $alt ?>" loading="lazy"/></a>
 				<h2>
 					<a href="<?php the_permalink(); ?>">
 						<?php echo $title; ?>
