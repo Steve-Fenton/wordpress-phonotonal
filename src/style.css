@@ -230,6 +230,14 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
   filter: unset;
 }
 
+/* Don't animate the image for these users */
+@media (prefers-reduced-motion) {
+  .funky-title > a:hover img, funky-title > a:focus img {
+    transform: scale(1);
+    filter: unset;
+  }
+}
+
 .funky-title h2 {
   background-color: var(--overlayaft);
   text-align: center;
@@ -607,6 +615,17 @@ strong {
 
 .listing-item.init.appearing {
    top: 0px;
+}
+
+/* Don't animate the listing for these users */
+@media (prefers-reduced-motion) {
+  .listing-item.init {
+    top: 0px;
+  }
+  
+  .listing-item.init.appearing {
+     top: 0px;
+  }
 }
 
 .listing-item .title {
