@@ -164,16 +164,19 @@ h1, h2, h3, h4, h5, h6, a.title {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 a.title {
   font-size: 3rem;
   text-transform: uppercase;
+  display: inline-block;
+  margin: 1rem 0 0 0;
 }
 
 a.title img {
   max-width: 300px;
-  margin: 1rem 0 0 0;
+  padding-top: 0.3rem;
 }
 
 h1 {
@@ -202,9 +205,8 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
   background-size: cover;
   background-position: center;
   border-top: 1.5em solid var(--funk);
-  margin-top: 1em;
-  padding: 0 0 3em 0;
-  margin: -1.8rem;
+  margin: -1rem -1rem 0 -1rem;
+  padding-bottom: 0.001em;
 }
 
 .funky-title > a {
@@ -401,7 +403,7 @@ strong {
 
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 26rem));
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));
   grid-gap: 2em;
   justify-content: center;
   margin-top: 1em;
@@ -592,9 +594,19 @@ strong {
 /* Other Styles */
 
 .listing-item {
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
   background-color: var(--aft2);
+}
+
+.listing-item.init {
+  position: relative;
+  top: 80px;
+  transition: all 500ms ease;
+}
+
+.listing-item.init.appearing {
+   top: 0px;
 }
 
 .listing-item .title {
