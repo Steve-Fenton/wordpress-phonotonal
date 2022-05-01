@@ -1,32 +1,37 @@
-var options = {
+var articleOptions = {
     root: null,
     rootMargin: '0px',
     threshold: 0
 };
 
-var observer = new IntersectionObserver(function(entries) {
-	// isIntersecting is true when element and viewport are overlapping
-	// isIntersecting is false when element and viewport don't overlap
-    console.log('IntersectionObserver', entries.length);
+var cn = {
+    init: 'init',
+    appearing: 'appearing'
+};
 
+function onArticleIntersection(entries) {
+    var delay = 0;
     entries.forEach(function(entry) {
         var elem = entry.target;
 
-        if(entry.isIntersecting === true){
-            entries.forEach(function (entry) {
-                elem.classList.add('appearing');
-                window.setTimeout(function() {
-                    elem.classList.remove('init');
-                    elem.classList.remove('appearing');
-                }, 1000);
-            });
-        }
+        window.setTimeout(function () {
+            if (entry.isIntersecting === true) {
+                entries.forEach(function () {
+                    elem.classList.add(cn.appearing);
+                });
+            } else {
+                elem.classList.remove(cn.appearing);
+            }
+        }, delay);
+
+        delay += 100;
     });
-}, options);
+}
 
 var articles = document.querySelectorAll('.listing-item');
+var articleObserver = new IntersectionObserver(onArticleIntersection, articleOptions);
 
 articles.forEach(function (elem) {
-elem.classList.add('init');
-    observer.observe(elem);
+    elem.classList.add(cn.init);
+    articleObserver.observe(elem);
 });
