@@ -4,7 +4,11 @@
 			<?php
 			$title = get_the_title();
 			$alt = str_replace('"', '', $title);
-			$title = str_replace( ' - ', '<br />',  $title );
+
+			$parts = explode('&#8211;', $title);
+			if (count($parts) == 2) {
+			 	$title = $parts[0] . '<em>' . $parts[1] . '</em>';
+			}
 			?>
 
 			<?php if ( has_post_thumbnail() ) { ?>
@@ -28,7 +32,7 @@
 			<div>
 				<?php the_excerpt(); ?>
 				<div>
-					<a href="<?php the_permalink(); ?>">Read "<?php the_title(); ?>"</a>
+					<a href="<?php the_permalink(); ?>" class="button">Read <?php echo $title; ?></a>
 				</div>
 			</div>
 			

@@ -8,6 +8,12 @@ get_header(); ?>
 		$thumbnail_id = get_post_thumbnail_id( $post->ID );
 		$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 		$image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
+
+		$title = get_the_title();
+		$parts = explode('&#8211;', $title);
+		if (count($parts) == 2) {
+			 $title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
+		}
 	?>
 	<div class="bgfonk" style="background-image: url('<?php echo $image ?>');">
 		<main class="single-item">
@@ -16,7 +22,7 @@ get_header(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 						<img class="lead-img" src="<?php echo $image ?>" alt="<?php echo $alt; ?>" />
-						<h1><?php the_title(); ?></h1>
+						<h1><?php echo $title; ?></h1>
 						
 						<?php the_content(); ?>
 
