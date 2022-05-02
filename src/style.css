@@ -82,6 +82,7 @@ a {
   color: var(--link);
   text-decoration: none;
   border-radius: 2px;
+  transition: all 500ms ease;
 }
 
 a:hover,
@@ -97,11 +98,12 @@ a.button {
   display: block;
   margin: 1rem auto;
   text-align: center;
+  transition: all 500ms ease;
 }
 
 a.button:hover,
 a.button:focus {
-  background-color: var(--funk);
+  box-shadow: inset 400px 0 0 0 var(--funk);
   color: var(--aft2);
 }
 
@@ -727,7 +729,7 @@ ul.post-categories li a,
 .tags a {
   display: inline-block;
   background-color: var(--link);
-  color: var(--bright);
+  color: var(--aft2);
   padding: 0.2rem 1rem;
   margin-bottom: 0.5rem;
 }
@@ -736,8 +738,8 @@ ul.post-categories li a:hover,
 ul.post-categories li a:focus,
 .tags a:hover,
 .tags a:focus {
-  background-color: var(--fore);
-  color: var(--link);
+  box-shadow: inset 400px 0 0 0 var(--funk);
+  color: var(--aft2);
 }
 
 /* Social Icons */
