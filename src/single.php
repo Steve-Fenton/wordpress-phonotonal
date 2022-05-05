@@ -53,6 +53,10 @@ get_header(); ?>
 							<a href="/">⊚</a> <a href="<?php echo $firstCatLink ?>"><?php echo $firstCat ?></a> <span><?php echo $headline ?></span>
 						</div>
 
+						<div class="tags">
+							<?php echo get_the_tag_list( '&nbsp;', ' ' ); ?>
+						</div>
+
 						<div class="boxed">
 							<div class="simple-grid">
 								<?php
@@ -72,17 +76,13 @@ get_header(); ?>
 									<a href="<?php echo $user_link ?>"><img src="<?php echo get_avatar_url($user_email,  'size = 200'); ?>" class="author shift" alt="<?php echo $user_name ?>"></a>
 								</div>
 							</div>
-							
-							<div class="tags">
-								<?php echo get_the_tag_list( '&nbsp;', ' ' ); ?>
-							</div>
-							
-							<?php if(comments_open()) : ?>
-								<span class="comments-link">
-									<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); ?>
-								</span>
-							<?php endif; ?>
 						</div>
+						
+						<?php if(comments_open()) : ?>
+							<span class="comments-link">
+								<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); ?>
+							</span>
+						<?php endif; ?>
 
 						<div class="simple-grid">
 							<div class="prev"><?php previous_post_link(); ?></div>

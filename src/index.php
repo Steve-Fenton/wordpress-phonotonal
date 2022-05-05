@@ -7,6 +7,7 @@
 get_header(); ?>
 <!-- *ix* -->
 <main class="article-grid">
+	<h1 class="hidden">Phonotonal - Latest Articles</h1>
 	<?php get_template_part('article', 'index'); ?>
 </main>	
 <?php get_footer(); ?>

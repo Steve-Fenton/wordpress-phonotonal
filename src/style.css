@@ -641,6 +641,10 @@ strong {
 
 /* Other Styles */
 
+.hidden {
+  display: none;
+}
+
 .listing-item {
   padding: 1rem;
   box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
