@@ -9,7 +9,8 @@ get_header(); ?>
 		$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 		$image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
 
-		$title = get_the_title();
+		$headline = get_the_title();
+		$title = $headline;
 		$parts = explode('&#8211;', $title);
 		if (count($parts) == 2) {
 			 $title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
@@ -32,9 +33,10 @@ get_header(); ?>
 								$user_email = get_the_author_meta( 'user_email' );
 								$user_description = get_the_author_meta( 'user_description', $post->post_author );
 								$user_name = get_author_name();
+								$user_link = get_author_posts_url( get_the_author_meta( 'ID' ) );
 								?>
 								<div>
-									<p>Written by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a>
+									<p>Written by <a href="<?php echo $user_link; ?>"><?php echo $user_name; ?></a>
 									on <time><?php the_time(get_option('date_format')); ?></time></p>
 									<div>
 										<?php echo $user_description ?>
@@ -44,6 +46,17 @@ get_header(); ?>
 									<img src="<?php echo get_avatar_url($user_email,  'size = 200'); ?>" class="author" alt="<?php echo $user_name; ?>">
 								</div>
 							</div>
+
+							<?php
+							$tags = get_the_tags();
+							$textTags = [];
+
+							if ($tags) {
+								foreach( $tags as $tag ) {
+									$textTags[] = $tag->name;
+								}
+							}
+							?>
 							
 							<div>
 								<?php echo get_the_category_list(); ?>
@@ -79,4 +92,34 @@ get_header(); ?>
 
 		</main>
 	</div>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<?php echo get_permalink(); ?>"
+      },
+      "headline": "<?php echo $headline; ?>",
+	  "keywords": "<?php echo implode(',', $textTags); ?>",
+      "image": [
+        "<?php echo $image ?>"
+      ],
+      "datePublished": "<?php the_time('Y-m-d'); ?>",
+      "dateModified": "<?php the_modified_date('Y-m-d'); ?>",
+      "author": {
+        "@type": "Person",
+        "name": "<?php echo $user_name; ?>",
+        "url": "<?php echo $user_link; ?>"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Phonotonal",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.phonotonal.com/wp-content/themes/phonotonal/lock-up-2000.png"
+        }
+      }
+    }
+    </script>
 <?php get_footer(); ?>
