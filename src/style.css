@@ -742,6 +742,23 @@ ul.post-categories li a:focus,
   color: var(--aft2);
 }
 
+/* Breadcrumbs */
+.breadcrumb {
+  text-align: center;
+  margin: 1.5em 0;
+}
+
+.breadcrumb a, .breadcrumb span {
+  display: inline-block;
+  position: relative;
+}
+
+.breadcrumb a::after {
+  content: '>';
+  padding: 0 0 0 0.5em;
+  color: var(--funk);
+}
+
 /* Social Icons */
 .social-icons ul {
   text-align: center;

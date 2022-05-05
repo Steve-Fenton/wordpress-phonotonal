@@ -4,28 +4,54 @@
  */
 get_header(); ?>
 <!-- *single* -->
-	<?php
-		$thumbnail_id = get_post_thumbnail_id( $post->ID );
-		$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-		$image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
+<?php
+	$thumbnail_id = get_post_thumbnail_id( $post->ID );
+	$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+	$image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
 
-		$headline = get_the_title();
-		$title = $headline;
-		$parts = explode('&#8211;', $title);
-		if (count($parts) == 2) {
-			 $title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
+	$headline = get_the_title();
+	$title = $headline;
+	$parts = explode('&#8211;', $title);
+	if (count($parts) == 2) {
+			$title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
+	}
+
+	$firstCat = '';
+	$firstCatLink = '';
+	$textTags = [];
+
+	$cats = get_the_category();
+	if ($cats) {
+		foreach($cats as $cat) {
+			$textTags[] = $cat->cat_name;
+			if (strlen($firstCat) == 0) {
+				$firstCat = $cat->cat_name;
+				$firstCatLink = get_category_link ($cat);
+			}
 		}
-	?>
+	}
+
+	$tags = get_the_tags();
+	if ($tags) {
+		foreach( $tags as $tag ) {
+			$textTags[] = $tag->name;
+		}
+	}
+?>
 	<div class="bgfonk" style="background-image: url('<?php echo $image ?>');">
 		<main class="single-item">
 			<?php if (have_posts()) : ?>
 				<?php while (have_posts()) : the_post(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-						<img class="lead-img" src="<?php echo $image ?>" alt="<?php echo $alt; ?>" />
-						<h1><?php echo $title; ?></h1>
+						<img class="lead-img" src="<?php echo $image ?>" alt="<?php echo $alt ?>" />
+						<h1><?php echo $title ?></h1>
 						
 						<?php the_content(); ?>
+
+						<div class="breadcrumb">
+							<a href="/">⊚</a> <a href="<?php echo $firstCatLink ?>"><?php echo $firstCat ?></a> <span><?php echo $headline ?></span>
+						</div>
 
 						<div class="boxed">
 							<div class="simple-grid">
@@ -36,34 +62,21 @@ get_header(); ?>
 								$user_link = get_author_posts_url( get_the_author_meta( 'ID' ) );
 								?>
 								<div>
-									<p>Written by <a href="<?php echo $user_link; ?>"><?php echo $user_name; ?></a>
+									<p>Written by <a href="<?php echo $user_link ?>"><?php echo $user_name ?></a>
 									on <time><?php the_time(get_option('date_format')); ?></time></p>
 									<div>
 										<?php echo $user_description ?>
 									</div>
 								</div>
 								<div>
-									<img src="<?php echo get_avatar_url($user_email,  'size = 200'); ?>" class="author" alt="<?php echo $user_name; ?>">
+									<img src="<?php echo get_avatar_url($user_email,  'size = 200'); ?>" class="author" alt="<?php echo $user_name ?>">
 								</div>
 							</div>
-
-							<?php
-							$tags = get_the_tags();
-							$textTags = [];
-
-							if ($tags) {
-								foreach( $tags as $tag ) {
-									$textTags[] = $tag->name;
-								}
-							}
-							?>
 							
-							<div>
-								<?php echo get_the_category_list(); ?>
-								<div class="tags">
-									<?php echo get_the_tag_list( '&nbsp;', ' ' ); // Display the tags this post has, as links separated by spaces and pipes ?>
-								</div>
+							<div class="tags">
+								<?php echo get_the_tag_list( '&nbsp;', ' ' ); ?>
 							</div>
+							
 							<?php if(comments_open()) : ?>
 								<span class="comments-link">
 									<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); ?>
@@ -98,19 +111,19 @@ get_header(); ?>
       "@type": "Article",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "<?php echo get_permalink(); ?>"
+        "@id": "<?php echo get_permalink() ?>"
       },
-      "headline": "<?php echo $headline; ?>",
-	  "keywords": "<?php echo implode(',', $textTags); ?>",
+      "headline": "<?php echo $headline ?>",
+	  "keywords": "<?php echo implode(',', $textTags) ?>",
       "image": [
         "<?php echo $image ?>"
       ],
-      "datePublished": "<?php the_time('Y-m-d'); ?>",
-      "dateModified": "<?php the_modified_date('Y-m-d'); ?>",
+      "datePublished": "<?php the_time('Y-m-d') ?>",
+      "dateModified": "<?php the_modified_date('Y-m-d') ?>",
       "author": {
         "@type": "Person",
-        "name": "<?php echo $user_name; ?>",
-        "url": "<?php echo $user_link; ?>"
+        "name": "<?php echo $user_name ?>",
+        "url": "<?php echo $user_link ?>"
       },
       "publisher": {
         "@type": "Organization",
@@ -120,6 +133,28 @@ get_header(); ?>
           "url": "https://www.phonotonal.com/wp-content/themes/phonotonal/lock-up-2000.png"
         }
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.phonotonal.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "<?php echo $firstCat ?>",
+        "item": "<?php echo $firstCatLink ?>"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "<?php echo $headline ?>",
+        "item": "<?php echo get_permalink() ?>"
+      }]
     }
     </script>
 <?php get_footer(); ?>
