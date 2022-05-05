@@ -9,7 +9,7 @@ get_header();
 $cat = get_queried_object();
 ?>
 <!-- *cat* -->
-	<div class="constrain">
+	<div class="constrain-more">
 		<h1><?php single_cat_title(); ?></h1>
 		<p>You can subscribe to the <a href="/section/<?php echo $cat->slug ?>/feed"><?php echo $cat->name ?> category micro-feed</a>.</p>
 	</div>

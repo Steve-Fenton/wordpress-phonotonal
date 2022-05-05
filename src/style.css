@@ -153,6 +153,9 @@ img, video {
 
 img.author {
   border-radius: 50%;
+}
+
+.shift {
   margin-top: 2rem;
 }
 
@@ -413,8 +416,18 @@ strong {
   padding: 0 2em;
 }
 
+.constrain-more {
+  max-width: 50em;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+.constrain-more h1 {
+  text-align: center;
+}
+
 @media (max-width: 850px) {
-  .constrain {
+  .constrain, .constrain-more {
     padding: 0 0.5rem;
   }
 }

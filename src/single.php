@@ -69,7 +69,7 @@ get_header(); ?>
 									</div>
 								</div>
 								<div>
-									<img src="<?php echo get_avatar_url($user_email,  'size = 200'); ?>" class="author" alt="<?php echo $user_name ?>">
+									<a href="<?php echo $user_link ?>"><img src="<?php echo get_avatar_url($user_email,  'size = 200'); ?>" class="author shift" alt="<?php echo $user_name ?>"></a>
 								</div>
 							</div>
 							
