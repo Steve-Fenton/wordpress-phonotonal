@@ -388,6 +388,7 @@ math mo {
 nav {
   border-bottom: 1px solid var(--aft2);
   background-color: var(--aft);
+  text-transform: lowercase;
 }
 
 nav ul {

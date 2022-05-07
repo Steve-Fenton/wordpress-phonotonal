@@ -3,13 +3,13 @@ header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
 $title = wp_title('', false);
 if (strlen($title) == 0) {
-	$title = 'Phonotonal';
+	$title = 'Home';
 }
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head <?php language_attributes(); ?>>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php echo $title ?></title>
+	<title><?php echo $title ?> | Phonotonal</title>
 	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="Steve Fenton">
 	<meta name="msapplication-TileColor" content="#6C94C7"/>
