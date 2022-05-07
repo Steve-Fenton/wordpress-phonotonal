@@ -13,7 +13,7 @@ $tag = get_queried_object();
 		<h1><?php single_tag_title(); ?></h1>
 		<p>You can subscribe to the <a href="/interest/<?php echo $tag->slug ?>/feed"><?php echo $tag->name ?> tag micro-feed</a>.</p>
 		<div>
-			<?php echo tag_description($tag); ?>
+			<?php echo str_replace('<br />', '<br /><br />', tag_description($tag)) ?>
 		</div>
 	</div>
 	<main class="article-grid">
