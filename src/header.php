@@ -5,11 +5,68 @@ $title = wp_title('', false);
 if (strlen($title) == 0) {
 	$title = 'Home';
 }
+
+$qry = get_queried_object();
+
+if ($qry) {
+	$qry_type = get_class($qry);
+	$meta_description = get_field('meta_description', $qry);
+	$meta_keywords = get_field('meta_keywords', $qry);
+
+	switch ($qry_type) {
+		case 'WP_Post':
+			if (strlen($meta_description) == 0) {
+				$meta_description = wp_trim_words(get_the_excerpt($qry), 25);
+			}
+		
+			if (strlen($meta_keywords) == 0) {
+				$post_title = get_the_title($qry);
+				$parts = explode('&#8211;', $post_title);
+				$meta_keywords = strtolower(implode(',', $parts));
+			}
+			break;
+		case 'WP_Term':
+			if (strlen($meta_description) == 0) {
+				$meta_description = wp_trim_words($qry->description, 25);
+			}
+		
+			if (strlen($meta_keywords) == 0) {
+				$meta_keywords = strtolower($qry->name);
+			}
+			break;
+		case 'WP_User':
+			if (strlen($meta_description) == 0) {
+				$meta_description = wp_trim_words($qry->user_description, 25);
+			}
+		
+			if (strlen($meta_keywords) == 0) {
+				$author_name = get_the_author_meta('display_name', $qry->ID);
+				$meta_keywords = strtolower($author_name);
+			}
+			break;
+	}
+
+
+}
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head <?php language_attributes(); ?>>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<title><?php echo $title ?> | <?php bloginfo('name') ?></title>
+	<meta name="description" content="<?php
+	if ($qry) {
+        echo str_replace('"', '', $meta_description);
+    } else {
+        bloginfo('name'); echo " - "; bloginfo('description');
+    }
+	?>" />
+	<meta name="keywords" content="<?php
+	if ($qry) {
+        echo str_replace('"', '', $meta_keywords);
+    } else {
+        echo 'phonotonal,music,magazine,reviews';
+    }
+	?>" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="Steve Fenton">
 	<meta name="msapplication-TileColor" content="#6C94C7"/>
