@@ -45,8 +45,6 @@ if ($qry) {
 			}
 			break;
 	}
-
-
 }
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
