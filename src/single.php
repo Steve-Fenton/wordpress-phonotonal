@@ -13,7 +13,7 @@ get_header(); ?>
 	$title = $headline;
 	$parts = explode('&#8211;', $title);
 	if (count($parts) == 2) {
-			$title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
+		$title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
 	}
 
 	$firstCat = '';
