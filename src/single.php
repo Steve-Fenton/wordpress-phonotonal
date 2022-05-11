@@ -7,7 +7,7 @@ get_header(); ?>
 <?php
 	$thumbnail_id = get_post_thumbnail_id( $post->ID );
 	$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-	$image = wp_get_attachment_image_url( $thumbnail_id, 'large' );
+	$image = wp_get_attachment_image_url( $thumbnail_id, 'medium' );
 
 	$headline = get_the_title();
 	$title = $headline;
@@ -64,6 +64,7 @@ get_header(); ?>
 								$user_description = get_the_author_meta( 'user_description', $post->post_author );
 								$user_name = get_author_name();
 								$user_link = get_author_posts_url( get_the_author_meta( 'ID' ) );
+								$user_avatar = get_field('avatar', 'user_' . $post->post_author);
 								?>
 								<div>
 									<p>Written by <a href="<?php echo $user_link ?>"><?php echo $user_name ?></a>
@@ -72,8 +73,8 @@ get_header(); ?>
 										<?php echo $user_description ?>
 									</div>
 								</div>
-								<div>
-									<a href="<?php echo $user_link ?>"><img src="<?php echo get_avatar_url($user_email,  'size = 200'); ?>" class="author shift" alt="<?php echo $user_name ?>"></a>
+								<div class="author-img">
+									<a href="<?php echo $user_link ?>"><?php echo wp_get_attachment_image($user_avatar, 'thumbnail'); ?></a>
 								</div>
 							</div>
 						</div>

@@ -1,7 +1,20 @@
+<?php 
+	$lazy = '';
+	$lazyCount = 0;
+	$lazyStart = 5;
+?>
 <?php if ( have_posts() ) : ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article class="listing-item">
 			<?php
+			$lazyCount++;
+
+			if ($lazyCount > 5) {
+				// Lazy loading above the fold causes cumulative layout shift (CLS)
+				// ... so reserve lazy loading for images definitely below the fold
+				$lazy = ' loading="lazy"';
+			}
+
 			$title = get_the_title();
 			$alt = str_replace('"', '', $title);
 
@@ -13,7 +26,7 @@
 
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="funky-title">
-			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php echo $alt ?>" loading="lazy"/></a>
+			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> /></a>
 				<h2>
 					<a href="<?php the_permalink(); ?>">
 						<?php echo $title; ?>

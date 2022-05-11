@@ -6,7 +6,7 @@
 
 // Define the version so we can easily replace it throughout the theme
 define('FENTON_VERSION', 2.0);
-header_remove("X-Powered-By");
+header_remove("x-powered-by");
 
 /*-----------------------------------------------------------------------------------*/
 /* Add Rss feed support to Head section

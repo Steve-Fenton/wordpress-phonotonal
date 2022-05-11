@@ -14,16 +14,16 @@ $author = get_queried_object();
 
 		<div class="simple-grid">
 			<?php
-		
 			$user_email = $author->user_email;
 			$user_name = get_author_name();
 			$user_link = get_author_posts_url( $author->id );
+			$user_avatar = get_field('avatar', $author);
 			?>
 			<div>
 				<?php echo $author->user_description ?>
 			</div>
-			<div>
-				<img src="<?php echo get_avatar_url($author->user_email,  'size = 200'); ?>" class="author" alt="<?php echo $user_name ?>">
+			<div class="author-img">
+				<?php echo wp_get_attachment_image($user_avatar, 'thumbnail'); ?>
 			</div>
 		</div>
 		

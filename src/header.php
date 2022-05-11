@@ -1,6 +1,10 @@
 <?php
+$cacheTime = (60 * 60) * 24;
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
+header('Cache-Control: max-age=' . $cacheTime . ', public');
+header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + $cacheTime)); 
+
 $title = wp_title('', false);
 if (strlen($title) == 0) {
 	$title = 'Home';
@@ -75,7 +79,7 @@ if ($qry) {
 	<meta name="google-site-verification" content="Bo3H4hqOkoriITgPKvJITCqGLv31p5cUm2m536tvxXE" />
 	<link rel="dns-prefetch" href="//s.w.org" />
 	<link rel="alternate" type="application/rss+xml" title="Phonotonal Feed" href="https://www.phonotonal.com/feed/" />
-	<link rel="stylesheet" id="wp-block-library-css"  href="https://www.phonotonal.com/wp-includes/css/dist/block-library/style.min.css?ver=5.9.3"  media="all" />
+	<!--<link rel="stylesheet" id="wp-block-library-css"  href="https://www.phonotonal.com/wp-includes/css/dist/block-library/style.min.css?ver=5.9.3"  media="all" />-->
 	<link rel="stylesheet" id="fenton-style-css"  href="https://www.phonotonal.com/wp-content/themes/phonotonal/style.css"  media="all" />
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36818004-3"></script>
 	<script>
