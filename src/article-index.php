@@ -26,7 +26,7 @@
 
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="funky-title">
-			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> /></a>
+			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> /></a>
 				<h2>
 					<a href="<?php the_permalink(); ?>">
 						<?php echo $title; ?>

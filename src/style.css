@@ -50,6 +50,7 @@ html {
   font-family: "r-condensed";
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
   src: url("font/roboto-condensed.ttf");
 }
 
@@ -57,6 +58,7 @@ html {
   font-family: "r-slab";
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
   src: url("font/roboto-slab.ttf");
 }
 
@@ -64,6 +66,7 @@ html {
   font-family: "g-icon";
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
   src: url("font/genericons-regular-webfont.woff");
 }
 

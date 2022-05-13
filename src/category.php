@@ -12,6 +12,9 @@ $cat = get_queried_object();
 	<div class="constrain-more">
 		<h1><?php single_cat_title(); ?></h1>
 		<p>You can subscribe to the <a href="/section/<?php echo $cat->slug ?>/feed"><?php echo $cat->name ?> category micro-feed</a>.</p>
+		<div>
+			<?php echo str_replace('<br />', '<br /><br />', category_description($cat)) ?>
+		</div>
 	</div>
 	<main class="article-grid">
 		<?php get_template_part('article', 'index'); ?>

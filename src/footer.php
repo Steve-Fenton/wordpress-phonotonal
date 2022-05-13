@@ -67,6 +67,6 @@
 		<li class="rss"><a href="<?php bloginfo('rss2_url'); ?>" target="_blank">Phonotonal RSS Feed</a></li>
 	</ul>
 </div>
-<script src="https://www.phonotonal.com/wp-content/themes/phonotonal/scripts/fenton.js"></script>
+<?php wp_footer(); ?>
 </body>
 </html>
