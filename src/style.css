@@ -330,7 +330,8 @@ footer li a {
 
 .footer-search {
   text-align: center;
-  margin: 1em 0;
+  margin: 1em 0 0 0;
+  background-color: var(--aft2);
 }
 
 .footer-search form {
@@ -348,6 +349,10 @@ footer li a {
 figcaption {
   text-align: center;
   font-style: italic;
+}
+
+form input {
+  padding: 0.5em 1em;
 }
 
 table {
@@ -446,12 +451,16 @@ strong {
     ". .";
 }
 
-.simple-grid .prev {
-  text-align: left;
+.paging {
+  margin: 4em 0;
 }
 
-.simple-grid .next {
-  text-align: right;
+.paging > div {
+  text-align: center;
+}
+
+.paging > div a {
+  padding: 0.5em 1em;
 }
 
 .article-grid {
@@ -477,7 +486,7 @@ strong {
   gap: 0 2rem;
   grid-template-areas:
     ". . .";
-  background-color: #000;
+  background-color: #111;
   padding: 0 2em 2em 2em;
 }
 

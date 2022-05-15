@@ -16,7 +16,7 @@ $tag = get_queried_object();
 			<?php echo str_replace('<br />', '<br /><br />', tag_description($tag)) ?>
 		</div>
 	</div>
-	<main class="article-grid">
+	<main>
 		<?php get_template_part('article', 'index'); ?>
 	</main>
 <?php get_footer(); ?>

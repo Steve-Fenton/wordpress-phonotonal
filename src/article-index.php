@@ -3,18 +3,20 @@
 	$lazyCount = 0;
 	$lazyStart = 5;
 ?>
+<div class="article-grid">
 <?php if ( have_posts() ) : ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article class="listing-item">
 			<?php
+			// Lazy loading above the fold causes cumulative layout shift (CLS)
+			// ... so reserve lazy loading for images definitely below the fold
 			$lazyCount++;
 
 			if ($lazyCount > 5) {
-				// Lazy loading above the fold causes cumulative layout shift (CLS)
-				// ... so reserve lazy loading for images definitely below the fold
 				$lazy = ' loading="lazy"';
 			}
 
+			// Prepare the title
 			$title = get_the_title();
 			$alt = str_replace('"', '', $title);
 
@@ -33,7 +35,6 @@
 					</a>
 				</h2>
 			</div>
-
 			<?php } else { ?>
 				<h2>
 					<a href="<?php the_permalink(); ?>">
@@ -52,11 +53,12 @@
 		</article>
 
 	<?php endwhile; ?>
+</div>
 	
-	<div class="simple-grid">
-		<div><?php next_posts_link( '&lt; Older Posts' ); ?></div>
-		<div><?php previous_posts_link( 'Newer Posts &gt;' ); ?></div>
-	</div>
+<div class="simple-grid paging">
+	<div class="prev"><?php next_posts_link( '&lt; Older Posts' ); ?></div>
+	<div class="next"><?php previous_posts_link( 'Newer Posts &gt;' ); ?></div>
+</div>
 
 <?php else : ?>
 				

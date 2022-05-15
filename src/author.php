@@ -28,7 +28,7 @@ $author = get_queried_object();
 		</div>
 		
 	</div>
-	<main class="article-grid">
+	<main>
 		<?php get_template_part('article', 'index'); ?>
 	</main>
 <?php get_footer(); ?>

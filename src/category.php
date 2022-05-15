@@ -16,7 +16,7 @@ $cat = get_queried_object();
 			<?php echo str_replace('<br />', '<br /><br />', category_description($cat)) ?>
 		</div>
 	</div>
-	<main class="article-grid">
+	<main>
 		<?php get_template_part('article', 'index'); ?>
 	</main>
 <?php get_footer(); ?>

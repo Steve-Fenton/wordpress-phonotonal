@@ -10,6 +10,8 @@ if (strlen($title) == 0) {
 	$title = 'Home';
 }
 
+$author_name = get_bloginfo('name');
+
 $qry = get_queried_object();
 
 if ($qry) {
@@ -28,6 +30,8 @@ if ($qry) {
 				$parts = explode('&#8211;', $post_title);
 				$meta_keywords = strtolower(implode(',', $parts));
 			}
+
+			$author_name = get_the_author_meta('first_name', $qry->post_author) . ' ' . get_the_author_meta('last_name', $qry->post_author);
 			break;
 		case 'WP_Term':
 			if (strlen($meta_description) == 0) {
@@ -70,12 +74,9 @@ if ($qry) {
     }
 	?>" />
 	<meta name="viewport" content="width=device-width" />
-	<meta name="author" content="Steve Fenton">
+	<meta name="author" content="<?php echo $author_name ?>">
 	<meta name="msapplication-TileColor" content="#34a4ba"/>
-	<meta name="msapplication-square150x150logo" content="/wp-content/uploads/2020/02/cropped-phonotonal-logo-192x192.png"/>
 	<meta name="google-site-verification" content="Bo3H4hqOkoriITgPKvJITCqGLv31p5cUm2m536tvxXE" />
-	<link rel="dns-prefetch" href="//s.w.org" />
-	<link rel="alternate" type="application/rss+xml" title="Phonotonal Feed" href="https://www.phonotonal.com/feed/" />
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B6YBFBMMT8"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];

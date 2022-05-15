@@ -3,7 +3,7 @@
 
 <footer>
 	<div class="footer-search">
-		<h3>Search</h3>
+		<h3 class="hidden">Search</h3>
 		<form role="search" method="get" class="search-form" action="/">
 			<label><span class="screen-reader-text">Search for:</span>
 			<input type="search" class="search-field" placeholder="Search …" value="" name="s">
