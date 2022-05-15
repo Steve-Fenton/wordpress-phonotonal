@@ -75,7 +75,7 @@ if ($qry) {
 	?>" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="<?php echo $author_name ?>">
-	<meta name="msapplication-TileColor" content="#34a4ba"/>
+	<meta name="theme-color" content="#34a4ba"/>
 	<meta name="google-site-verification" content="Bo3H4hqOkoriITgPKvJITCqGLv31p5cUm2m536tvxXE" />
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B6YBFBMMT8"></script>
 	<script>

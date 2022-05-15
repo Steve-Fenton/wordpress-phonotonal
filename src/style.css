@@ -96,7 +96,7 @@ a:focus {
 
 a.button {
   background: var(--link);
-  color: var(--aft2);
+  color: var(--aft);
   padding: 0.2rem 1rem;
   display: block;
   margin: 1rem auto;
@@ -107,7 +107,6 @@ a.button {
 a.button:hover,
 a.button:focus {
   box-shadow: inset 400px 0 0 0 var(--funk);
-  color: var(--aft2);
 }
 
 blockquote {
