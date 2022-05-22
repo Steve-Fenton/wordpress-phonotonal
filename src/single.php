@@ -17,8 +17,12 @@ get_header(); ?>
 	}
 
 	$textTags = [];
+
 	$firstCat = '';
 	$firstCatLink = '';
+
+	$secondCat = '';
+	$secondCatLink = '';
 
 	$tags = get_the_tags();
 	if ($tags) {
@@ -52,9 +56,12 @@ get_header(); ?>
 							if ($cats) {
 								uasort($cats, 'cat_sort');
 								foreach($cats as $cat) {
-									if ($fistCat == '') {
+									if ($firstCat == '') {
 										$firstCat = $cat->cat_name;
 										$firstCatLink = get_category_link($cat);
+									} else if ($secondCat == '') {
+										$secondCat = $cat->cat_name;
+										$secondCatLink = get_category_link($cat);
 									}
 									$textTags[] = $cat->cat_name;
 									echo '<a href="' . get_category_link($cat) . '">' . $cat->cat_name . '</a>';
@@ -147,23 +154,31 @@ get_header(); ?>
       }
     }
     </script>
+	<?php 
+		$position = 0;
+	?>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [{
         "@type": "ListItem",
-        "position": 1,
+        "position": <?php echo ++$position ?>,
         "name": "Home",
         "item": "https://www.phonotonal.com/"
       },{
         "@type": "ListItem",
-        "position": 2,
+        "position": <?php echo ++$position ?>,
         "name": "<?php echo $firstCat ?>",
         "item": "<?php echo $firstCatLink ?>"
-      },{
+      },<?php if ($secondCat != '') : ?>{
         "@type": "ListItem",
-        "position": 3,
+        "position": <?php echo ++$position ?>,
+        "name": "<?php echo $secondCat ?>",
+        "item": "<?php echo $secondCatLink ?>"
+      },<?php endif; ?>{
+        "@type": "ListItem",
+        "position": <?php echo ++$position ?>,
         "name": "<?php echo $headline ?>",
         "item": "<?php echo get_permalink() ?>"
       }]
