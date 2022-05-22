@@ -16,26 +16,22 @@ get_header(); ?>
 		$title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
 	}
 
+	$textTags = [];
 	$firstCat = '';
 	$firstCatLink = '';
-	$textTags = [];
-
-	$cats = get_the_category();
-	if ($cats) {
-		foreach($cats as $cat) {
-			$textTags[] = $cat->cat_name;
-			if (strlen($firstCat) == 0) {
-				$firstCat = $cat->cat_name;
-				$firstCatLink = get_category_link ($cat);
-			}
-		}
-	}
 
 	$tags = get_the_tags();
 	if ($tags) {
 		foreach( $tags as $tag ) {
 			$textTags[] = $tag->name;
 		}
+	}
+
+	function cat_sort($a, $b) {
+		if ($a->parent == $b->parent) {
+			return 0;
+		}
+		return ($a->parent < $b->parent) ? -1 : 1;
 	}
 ?>
 	<div class="bgfonk" style="background-image: url('<?php echo $image ?>');">
@@ -50,7 +46,22 @@ get_header(); ?>
 						<?php the_content(); ?>
 
 						<div class="breadcrumb">
-							<a href="/">⊚</a> <a href="<?php echo $firstCatLink ?>"><?php echo $firstCat ?></a> <span><?php echo $headline ?></span>
+							<a href="/">Phonotonal</a> 
+							<?php
+							$cats = get_the_category();
+							if ($cats) {
+								uasort($cats, 'cat_sort');
+								foreach($cats as $cat) {
+									if ($fistCat == '') {
+										$firstCat = $cat->cat_name;
+										$firstCatLink = get_category_link($cat);
+									}
+									$textTags[] = $cat->cat_name;
+									echo '<a href="' . get_category_link($cat) . '">' . $cat->cat_name . '</a>';
+								}
+							}
+							?>
+							<span><?php echo $headline ?></span>
 						</div>
 
 						<div class="tags">

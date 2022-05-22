@@ -2,6 +2,13 @@
 	$lazy = '';
 	$lazyCount = 0;
 	$lazyStart = 5;
+
+	function cat_sort($a, $b) {
+		if ($a->parent == $b->parent) {
+			return 0;
+		}
+		return ($a->parent < $b->parent) ? -1 : 1;
+	}
 ?>
 <div class="article-grid">
 <?php if ( have_posts() ) : ?>
@@ -24,6 +31,9 @@
 			if (count($parts) == 2) {
 			 	$title = $parts[0] . '<em>' . $parts[1] . '</em>';
 			}
+
+			// Categories
+			$cats = get_the_category();
 			?>
 
 			<?php if ( has_post_thumbnail() ) { ?>
@@ -42,6 +52,18 @@
 					</a>
 				</h2>
 			<?php } ?>
+			
+			<?php
+			if ($cats) {
+				uasort($cats, 'cat_sort');
+				echo '<ol class="funky-cat">';
+				foreach($cats as $cat) {
+					echo '<li><a href="' . get_category_link($cat) . '">' . $cat->cat_name . '</a></li>';
+				}
+				echo '</ol>';
+			}
+			?>
+			
 
 			<div>
 				<?php the_excerpt(); ?>

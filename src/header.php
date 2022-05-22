@@ -11,6 +11,7 @@ if (strlen($title) == 0) {
 }
 
 $author_name = get_bloginfo('name');
+$canonical = get_site_url();
 
 $qry = get_queried_object();
 
@@ -32,6 +33,7 @@ if ($qry) {
 			}
 
 			$author_name = get_the_author_meta('first_name', $qry->post_author) . ' ' . get_the_author_meta('last_name', $qry->post_author);
+			$canonical = get_the_permalink();
 			break;
 		case 'WP_Term':
 			if (strlen($meta_description) == 0) {
@@ -41,6 +43,8 @@ if ($qry) {
 			if (strlen($meta_keywords) == 0) {
 				$meta_keywords = strtolower($qry->name);
 			}
+
+			$canonical = get_term_link($qry);
 			break;
 		case 'WP_User':
 			if (strlen($meta_description) == 0) {
@@ -51,6 +55,8 @@ if ($qry) {
 				$author_name = get_the_author_meta('display_name', $qry->ID);
 				$meta_keywords = strtolower($author_name);
 			}
+
+			$canonical = get_author_posts_url($qry->ID);
 			break;
 	}
 }
@@ -59,6 +65,7 @@ if ($qry) {
 <head <?php language_attributes(); ?>>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<title><?php echo $title ?> | <?php bloginfo('name') ?></title>
+	<link rel="canonical" href="<?php echo esc_url($canonical) ?>" />
 	<meta name="description" content="<?php
 	if ($qry) {
         echo str_replace('"', '', $meta_description);
