@@ -132,6 +132,12 @@ blockquote p {
   display: inline;
 }
 
+blockquote cite {
+  display: block;
+  margin: 1rem 0 0 0;
+  font-size: 0.8rem;
+}
+
 dl dt {
   font-weight: bold;
 }
