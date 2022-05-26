@@ -58,7 +58,7 @@
 		</div>
 		
 	</div>
-	<div class="footer-legal">&copy; 2001-<?php echo date("Y"); ?> Phonotonal</div>
+	<div class="footer-legal">&copy; 2001-<?php echo date("Y"); ?> Phonotonal. <?php echo (intval(date('Y')) - 2001) ?> years of noise.</div>
 </footer>
 <div class="social-icons">
 	<ul>
