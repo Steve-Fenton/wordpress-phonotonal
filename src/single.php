@@ -50,10 +50,10 @@ get_header(); ?>
 						<?php the_content(); ?>
 
 						<div class="breadcrumb">
-							<a href="/">Phonotonal</a> 
 							<?php
 							$cats = get_the_category();
 							if ($cats) {
+								echo '<a href="/">Phonotonal</a>';
 								uasort($cats, 'cat_sort');
 								foreach($cats as $cat) {
 									if ($firstCat == '') {

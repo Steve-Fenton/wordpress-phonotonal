@@ -755,7 +755,7 @@ strong {
   margin: 1.5rem 0;
   background-color: var(--aft2);
   max-width: 35rem;
-  margin: 1rem auto;
+  margin: 1rem auto 2rem auto;
 }
 
 .single-item article.post h1 {
@@ -820,13 +820,12 @@ ul.post-categories li a:focus,
 
 .breadcrumb a, .breadcrumb span {
   display: inline-block;
-  position: relative;
 }
 
 .breadcrumb a::after {
   content: '>';
-  padding: 0 0 0 0.5em;
-  color: var(--funk);
+  padding: 0 0.5rem 0 0.5em;
+  color: var(--fore);
 }
 
 /* Social Icons */
