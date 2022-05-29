@@ -7,18 +7,15 @@
 get_header();
 
 $author = get_queried_object();
+$user_name = get_author_name();
+$user_link = get_author_posts_url( $author->id );
+$user_avatar = get_field('avatar', $author);
 ?>
 <!-- *author* -->
 	<div class="constrain-more">
-		<h1><?php echo $author->nickname ?></h1>
+		<h1><?php echo $user_name ?></h1>
 
 		<div class="simple-grid">
-			<?php
-			$user_email = $author->user_email;
-			$user_name = get_author_name();
-			$user_link = get_author_posts_url( $author->id );
-			$user_avatar = get_field('avatar', $author);
-			?>
 			<div>
 				<?php echo $author->user_description ?>
 			</div>

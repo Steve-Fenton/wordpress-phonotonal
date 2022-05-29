@@ -162,6 +162,7 @@ img, video {
 .author-img img {
   display: block;
   border-radius: 50%;
+  max-width: 200px;
 }
 
 .shift {
