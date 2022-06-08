@@ -139,10 +139,6 @@ get_header(); ?>
 							<?php endforeach; ?>
 						</div>
 
-						<div class="simple-grid">
-							<div class="prev"><?php previous_post_link(); ?></div>
-							<div class="next"><?php next_post_link(); ?></div>
-						</div>
 					</article>
 
 				<?php endwhile; ?>
