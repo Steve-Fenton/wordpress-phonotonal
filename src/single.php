@@ -80,7 +80,7 @@ get_header(); ?>
 						</div>
 
 						<div class="boxed">
-							<div class="simple-grid">
+							<div class="asym-grid">
 								<?php
 								$user_email = get_the_author_meta( 'user_email' );
 								$user_description = get_the_author_meta( 'user_description', $post->post_author );

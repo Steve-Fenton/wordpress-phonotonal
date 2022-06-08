@@ -168,7 +168,8 @@ img, video {
 .author-img img {
   display: block;
   border-radius: 50%;
-  max-width: 200px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .shift {
@@ -486,6 +487,15 @@ strong {
     ". .";
 }
 
+.asym-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: 0 2rem;
+  grid-template-areas:
+    ". .";
+}
+
 .mini > div {
   box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
   padding: 0 1rem 1rem 1rem;
@@ -553,14 +563,27 @@ strong {
 
 @media (max-width: 850px) {
   .simple-grid {
-    display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
-    gap: 2rem 0;
     grid-template-areas:
       "."
       ".";
     text-align: center;
+  }
+
+  .asym-grid {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "."
+      ".";
+    text-align: center;
+  }
+
+  .author-img > a, .author-img > img {
+    display: block;
+    max-width: 200px;
+    margin: 1rem auto;
   }
 
   .content-grid {
@@ -792,6 +815,10 @@ strong {
   top: 2.4rem;
   background: var(--aft2);
   z-index: 99999999;
+  text-align: center;
+}
+
+.single-item article.post h2 {
   text-align: center;
 }
 

@@ -15,7 +15,7 @@ $user_avatar = get_field('avatar', $author);
 	<div class="constrain-more">
 		<h1><?php echo $user_name ?></h1>
 
-		<div class="simple-grid">
+		<div class="asym-grid">
 			<div>
 				<?php echo $author->user_description ?>
 			</div>

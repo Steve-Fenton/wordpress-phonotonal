@@ -2,6 +2,7 @@
 </div>
 
 <footer>
+	<h2 class="hidden">More Content</h2>
 	<div class="footer-search">
 		<h3 class="hidden">Search</h3>
 		<form role="search" method="get" class="search-form" action="/">
