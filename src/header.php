@@ -83,16 +83,6 @@ if ($qry) {
 	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="<?php echo $author_name ?>">
 	<meta name="theme-color" content="#34a4ba"/>
-	<meta name="google-site-verification" content="Bo3H4hqOkoriITgPKvJITCqGLv31p5cUm2m536tvxXE" />
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B6YBFBMMT8"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-B6YBFBMMT8');
-	gtag("config", { "anonymize_ip": true });
-	gtag("set", "allow_ad_personalization_signals", false);
-	</script>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

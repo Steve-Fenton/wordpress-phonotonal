@@ -5,6 +5,9 @@
 get_header(); ?>
 <!-- *single* -->
 <?php
+	$current_cat_id = 0;
+	$current_post_id = get_the_ID();
+	$current_post_date = get_the_time('Y-m-d');
 	$thumbnail_id = get_post_thumbnail_id( $post->ID );
 	$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 	$image = wp_get_attachment_image_url( $thumbnail_id, 'medium' );
@@ -57,6 +60,7 @@ get_header(); ?>
 								uasort($cats, 'cat_sort');
 								foreach($cats as $cat) {
 									if ($firstCat == '') {
+										$current_cat_id = $cat->term_id;
 										$firstCat = $cat->cat_name;
 										$firstCatLink = get_category_link($cat);
 									} else if ($secondCat == '') {
@@ -102,6 +106,38 @@ get_header(); ?>
 								<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); ?>
 							</span>
 						<?php endif; ?>
+
+						<?php
+						// Related posts						
+						$postslist = array_merge(
+							// Part one - these will be the same forever - adjascent posts in the same cat
+							get_posts(array(
+								'numberposts' => 2,
+								'category' => $current_cat_id,
+								'exclude' => array($current_post_id),
+								'date_query' => array('before' => $current_post_date)
+							)),
+							// Part two - these will change - most recent posts in the same cat
+							get_posts(array(
+								'numberposts' => 2,
+								'category' => $current_cat_id,
+								'exclude' => array($current_post_id),
+								'date_query' => array('after' => $current_post_date)
+							))
+						);
+						?>
+
+						<h2>Discover More <?php echo $firstCat ?></h2>
+						<div class="simple-grid mini">
+							<?php foreach ($postslist as $post) : ?>
+							<div>
+								<a href="<?php echo get_permalink($post) ?>">
+									<h3><?php echo $post->post_title; ?></h3>
+									<?php echo get_the_post_thumbnail($post, 'thumbnail') ?>
+								</a>
+							</div>
+							<?php endforeach; ?>
+						</div>
 
 						<div class="simple-grid">
 							<div class="prev"><?php previous_post_link(); ?></div>
