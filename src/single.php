@@ -90,7 +90,7 @@ get_header(); ?>
 								?>
 								<div>
 									<p>Written by <a href="<?php echo $user_link ?>"><?php echo $user_name ?></a>
-									on <time><?php the_time(get_option('date_format')); ?></time></p>
+									on <time datetime="<?php the_time('Y-m-d\TH:i:sP'); ?>"><?php the_time(get_option('date_format')); ?></time></p>
 									<div>
 										<?php echo $user_description ?>
 									</div>
