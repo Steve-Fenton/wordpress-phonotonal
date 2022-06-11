@@ -60,7 +60,7 @@
 		
 	</div>
 	<?php
-	$rand = rand(0,3);
+	$rand = rand(0,4);
 	$quote = '';
 
 	switch ($rand) {
@@ -69,6 +69,9 @@
 			break;
 		case 2:
 			$quote = 'acts of faith in the future';
+			break;
+		case 3:
+			$quote = 'discordancy';
 			break;
 		default:
 			$quote = 'noise';
