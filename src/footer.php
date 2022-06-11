@@ -59,7 +59,24 @@
 		</div>
 		
 	</div>
-	<div class="footer-legal">&copy; 2001-<?php echo date("Y"); ?> Phonotonal. <?php echo (intval(date('Y')) - 2001) ?> years of noise.</div>
+	<?php
+	$rand = rand(0,3);
+	$quote = '';
+
+	switch ($rand) {
+		case 1:
+			$quote = 'half-baked philosophical drivel and nonsensical tirades';
+			break;
+		case 2:
+			$quote = 'acts of faith in the future';
+			break;
+		default:
+			$quote = 'noise';
+			break;
+	}
+	?>
+	<div class="footer-legal">&copy; 2001-<?php echo date("Y"); ?> Phonotonal.
+	<a href="https://www.phonotonal.com/years-of-noise/"><?php echo (intval(date('Y')) - 2001) ?> years of <?php echo $quote ?></a>.</div>
 </footer>
 <div class="social-icons">
 	<ul>
