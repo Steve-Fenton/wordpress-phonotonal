@@ -60,26 +60,16 @@
 		
 	</div>
 	<?php
-	$rand = rand(0,4);
-	$quote = '';
-
-	switch ($rand) {
-		case 1:
-			$quote = 'half-baked philosophical drivel and nonsensical tirades';
-			break;
-		case 2:
-			$quote = 'acts of faith in the future';
-			break;
-		case 3:
-			$quote = 'discordancy';
-			break;
-		default:
-			$quote = 'noise';
-			break;
-	}
+	// 21 years of...
+	$quotes = array(
+		'noise',
+		'half-baked philosophical drivel and nonsensical tirades',
+		'acts of faith in the future',
+		'discordancy'
+	);
 	?>
 	<div class="footer-legal">&copy; 2001-<?php echo date("Y"); ?> Phonotonal.
-	<a href="https://www.phonotonal.com/years-of-noise/"><?php echo (intval(date('Y')) - 2001) ?> years of <?php echo $quote ?></a>.</div>
+	<a href="/years-of-noise/"><?php echo (intval(date('Y')) - 2001) ?> years of <?php echo $quotes[array_rand($quotes)] ?></a>.</div>
 </footer>
 <div class="social-icons">
 	<ul>
