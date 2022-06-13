@@ -45,35 +45,34 @@ articles.forEach(function (elem) {
 
 // Video
 
-var videos = document.querySelectorAll('[data-youtube]');
+var videos = document.querySelectorAll('a[href^="https://www.youtube.com/watch?v="]');
 
 for (var video of videos) {
-	var id = new URL(video.href).searchParams.get('v');
-	video.setAttribute('data-youtube', id);
+    var id = new URL(video.href).searchParams.get('v');
+    video.setAttribute('data-youtube', id);
     video.classList.add('init');
-	video.setAttribute('role', 'button');
+    video.setAttribute('role', 'button');
 
-	video.innerHTML = `<div class="yt-video">
+    video.innerHTML = `<div class="yt-video">
     <div class="play-icon" style="background-image: url(https://img.youtube.com/vi/${id}/0.jpg)">▶</div>
     <div class="title">${video.textContent}</div>
     </div>`;
 }
 
 function clickHandler (event) {
-	var link = event.target.closest('[data-youtube]');
+    var link = event.target.closest('[data-youtube]');
 
-	if (!link) {
+    if (!link) {
         return;
     }
 
-	event.preventDefault();
-	var id = link.getAttribute('data-youtube');
+    event.preventDefault();
+    var id = link.getAttribute('data-youtube');
 
-	var player = document.createElement('div');
-	player.innerHTML = `<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    var player = document.createElement('div');
+    player.innerHTML = `<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 
-	link.replaceWith(player);
-
+    link.replaceWith(player);
 }
 
 document.addEventListener('click', clickHandler);

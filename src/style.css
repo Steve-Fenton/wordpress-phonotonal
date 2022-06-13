@@ -48,26 +48,26 @@ html {
 /* Fonts */
 
 @font-face {
-  font-family: "r-condensed";
-  font-weight: normal;
-  font-style: normal;
   font-display: swap;
+  font-family: "r-condensed";
+  font-style: normal;
+  font-weight: normal;
   src: url("font/roboto-condensed.ttf");
 }
 
 @font-face {
-  font-family: "r-slab";
-  font-weight: normal;
-  font-style: normal;
   font-display: swap;
+  font-family: "r-slab";
+  font-style: normal;
+  font-weight: normal;
   src: url("font/roboto-slab.ttf");
 }
 
 @font-face {
-  font-family: "g-icon";
-  font-weight: normal;
-  font-style: normal;
   font-display: swap;
+  font-family: "g-icon";
+  font-style: normal;
+  font-weight: normal;
   src: url("font/genericons-regular-webfont.woff");
 }
 
@@ -83,9 +83,9 @@ body {
 }
 
 a {
+  border-radius: 2px;
   color: var(--link);
   text-decoration: none;
-  border-radius: 2px;
   transition: all 500ms ease;
 }
 
@@ -98,9 +98,9 @@ a:focus {
 a.button {
   background: var(--link);
   color: var(--aft);
-  padding: 0.2rem 1rem;
   display: block;
   margin: 1rem auto;
+  padding: 0.2rem 1rem;
   text-align: center;
   transition: all 500ms ease;
 }
@@ -112,8 +112,8 @@ a.button:focus {
 
 blockquote {
   background: var(--blockquote);
-  color: var(--blocktext);
   border-left: 1em solid var(--funk);
+  color: var(--blocktext);
   font-size: 1.2rem;
   margin: 1.5em 0;
   padding: 1em;
@@ -135,8 +135,8 @@ blockquote p {
 
 blockquote cite {
   display: block;
-  margin: 1rem 0 0 0;
   font-size: 0.8rem;
+  margin: 1rem 0 0 0;
 }
 
 dl dt {
@@ -157,19 +157,19 @@ header {
 
 hr {
   border: 1px dashed var(--funk);
-  width: 60%;
   margin: 0 auto;
+  width: 60%;
 }
 
 img, video {
-  max-width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 .author-img img {
-  display: block;
-  border-radius: 50%;
   aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: block;
   object-fit: cover;
 }
 
@@ -186,8 +186,8 @@ p {
 }
 
 small {
-  font-size: 0.8rem;
   border-top: 1px solid var(--fore);
+  font-size: 0.8rem;
 }
 
 /* Headings */
@@ -195,21 +195,21 @@ small {
 h1, h2, h3, h4, h5, h6, a.title {
   font-family: 'r-slab', sans-serif;
   font-weight: normal;
+  letter-spacing: 0;
   line-height: 1em;
   text-transform: uppercase;
-  letter-spacing: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 1em;
   margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 a.title {
-  font-size: 3rem;
-  text-transform: uppercase;
   display: inline-block;
+  font-size: 3rem;
   margin: 1rem 0 0 0;
+  text-transform: uppercase;
 }
 
 a.title img {
@@ -244,40 +244,40 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
 
 .funky-title {
   background-color: var(--link);
-  background-size: cover;
   background-position: center;
+  background-size: cover;
   border-top: 1.5em solid var(--funk);
   margin: -1rem -1rem 0 -1rem;
   padding-bottom: 0.001em;
 }
 
 .funky-title > a {
+  aspect-ratio: 1 / 1;
   display: block;
-  width: 100%;
   height: 100%;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
+  width: 100%;
 }
 
 .funky-title > a img {
-  width: 100%;
   aspect-ratio: 1 / 1;
+  filter: brightness(0.75);
   object-fit: cover;
   transition: all 300ms ease;
-  filter: brightness(0.75);
+  width: 100%;
 }
 
 .funky-title > a:hover img, funky-title > a:focus img {
-  transform: scale(1.2);
   filter: unset;
+  transform: scale(1.2);
 }
 
 .funky-cat {
   background-color: var(--aft);
-  margin: 0 -1rem;
-  text-align: center;
   list-style: none;
+  margin: 0 -1rem;
   padding: 0.5rem 0;
+  text-align: center;
 }
 
 .funky-cat li {
@@ -309,13 +309,13 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
 }
 
 .funky-title h2 a {
-  font-size: 1.6rem;
   color: var(--overlayfore);
   display: inline-block;
-  padding: 0.3em 0;
-  transform: rotate(3deg);
-  text-align: center;
+  font-size: 1.6rem;
   max-width: calc(100% - 2em);
+  padding: 0.3em 0;
+  text-align: center;
+  transform: rotate(3deg);
 }
 
 .funky-title h2 a em {
@@ -366,9 +366,9 @@ footer li a {
 }
 
 .footer-search {
-  text-align: center;
-  margin: 1em 0 0 0;
   background-color: var(--aft2);
+  margin: 1em 0 0 0;
+  text-align: center;
 }
 
 .footer-search form {
@@ -384,8 +384,8 @@ footer li a {
 /* Tables */
 
 figcaption {
-  text-align: center;
   font-style: italic;
+  text-align: center;
 }
 
 form input {
@@ -393,8 +393,8 @@ form input {
 }
 
 table {
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 }
 
 table td,
@@ -405,20 +405,20 @@ table th {
 
 /* Code */
 code, kbd, math {
+  background-color: var(--aft);
+  border: 1px dotted var(--fore);
+  color: var(--fore);
   font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
   font-size: 0.9rem;
-  background-color: var(--aft);
-  color: var(--fore);
   overflow: auto;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  border: 1px dotted var(--fore);
 }
 
 /* Math overrides of the code style */
 math {
-  font-size: 1.2em;
   color: var(--funk);
+  font-size: 1.2em;
   padding: 0.2em 0.5em 0.3em;
 }
 
@@ -481,27 +481,27 @@ strong {
 
 .simple-grid {
   display: grid;
+  gap: 0 2rem;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
-  gap: 0 2rem;
   grid-template-areas:
     ". .";
 }
 
 .asym-grid {
   display: grid;
+  gap: 0 2rem;
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 1fr;
-  gap: 0 2rem;
   grid-template-areas:
     ". .";
 }
 
 .mini > div {
-  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
-  padding: 0 1rem 1rem 1rem;
   background-color: var(--aft);
+  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
   margin-bottom: 2rem;
+  padding: 0 1rem 1rem 1rem;
   text-align: center;
 }
 
@@ -533,25 +533,25 @@ strong {
 
 .article-grid {
   display: grid;
+  gap: 2em;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));
-  grid-gap: 2em;
   justify-content: center;
   margin-top: 1em;
 }
 
 .content-grid {
   display: grid;
-  grid-template-columns: 100%;
   gap: 0 2rem;
+  grid-template-columns: 100%;
   grid-template-areas:
     ". .";
 }
 
 .footer-grid {
   display: grid;
+  gap: 0 2rem;
   grid-template-columns: auto auto auto;
   grid-template-rows: 1fr;
-  gap: 0 2rem;
   grid-template-areas:
     ". . .";
   background-color: #111;
@@ -583,15 +583,15 @@ strong {
 
   .author-img > a, .author-img > img {
     display: block;
-    max-width: 200px;
     margin: 1rem auto;
+    max-width: 200px;
   }
 
   .content-grid {
     display: grid;
+    gap: 2rem 0;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
-    gap: 2rem 0;
     grid-template-areas:
       "."
       ".";
@@ -604,9 +604,9 @@ strong {
 
   .footer-grid {
     display: grid;
+    gap: 2rem 0;
     grid-template-columns: 100%;
     grid-template-rows: auto auto auto;
-    gap: 2rem 0;
     grid-template-areas:
       "."
       "."
@@ -622,94 +622,94 @@ strong {
 /* Timeline */
 
 .timeline {
+  background: rgba(0, 0, 0, 0.2);
   border-left: 8px solid var(--funk);
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
-  background: rgba(0, 0, 0, 0.2);
-  letter-spacing: 0.5px;
-  position: relative;
-  line-height: 1.4em;
   font-size: 1.03em;
-  padding: 50px;
+  letter-spacing: 0.5px;
+  line-height: 1.4em;
   list-style: none;
-  text-align: left;
   margin: 0 0 0 3.8rem !important;
+  padding: 50px;
+  position: relative;
+  text-align: left;
 }
 
 .timeline .event {
   border-bottom: 1px solid var(--aft2);
-  padding-bottom: 25px;
   margin-bottom: 50px;
+  padding-bottom: 25px;
   position: relative;
 }
 
 .timeline .event:last-of-type {
-  padding-bottom: 0;
-  margin-bottom: 0;
   border: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .timeline .event:before,
 .timeline .event:after {
-  position: absolute;
   display: block;
+  position: absolute;
   top: 0;
 }
 
 .timeline .event:before {
-  left: -119px;
   color: rgba(255, 255, 255, 0.4);
   content: attr(data-date);
+  left: -119px;
   text-align: right;
   text-transform: uppercase;
 }
 
 .timeline .event:after {
-  box-shadow: 0 0 0 8px var(--funk);
-  left: -61px;
   background: var(--aft2);
   border-radius: 50%;
-  height: 15px;
-  width: 15px;
+  box-shadow: 0 0 0 8px var(--funk);
   content: '';
+  height: 15px;
+  left: -61px;
   top: 5px;
+  width: 15px;
 }
 
 /* Gallery */
 
 .gallery img {
   height: 100%;
-  width: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
 .gallery figure {
+  border: unset;
   height: 100%;
   position: relative;
-  border: unset;
 }
 
 .gx2 {
   display: grid;
+  gap: 4px;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 4px;
 }
 
 .gx3 {
   display: grid;
+  gap: 4px;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
 }
 
 .gx3l {
   display: grid;
+  gap: 4px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     "large large ."
     "large large .";
-  grid-gap: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
 }
@@ -720,11 +720,11 @@ strong {
 
 .gx3r {
   display: grid;
+  gap: 4px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     ". large large"
     ". large large";
-  grid-gap: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
 }
@@ -750,9 +750,9 @@ strong {
 }
 
 .listing-item {
-  padding: 1rem;
-  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
   background-color: var(--aft2);
+  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
+  padding: 1rem;
   will-change: top;
 }
 
@@ -785,8 +785,8 @@ strong {
 
 .boxed {
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 2rem;
   margin: 2rem 0;
+  padding: 2rem;
 }
 
 .bgfonk {
@@ -801,22 +801,21 @@ strong {
 }
 
 .single-item article.post {
-  font-size: 1.1rem;
-  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
-  padding: 1rem;
-  margin: 1.5rem 0;
   background-color: var(--aft2);
-  max-width: 35rem;
+  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
+  font-size: 1.1rem;
   margin: 1rem auto 2rem auto;
+  max-width: 35rem;
+  padding: 1rem;
 }
 
 .single-item article.post h1 {
+  background: var(--aft2);
   position: -webkit-sticky;
   position: sticky;
-  top: 2.4rem;
-  background: var(--aft2);
-  z-index: 99999999;
   text-align: center;
+  top: 2.4rem;
+  z-index: 99999999;
 }
 
 .single-item article.post h2 {
@@ -824,12 +823,12 @@ strong {
 }
 
 .sticky {
+  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
+  margin-bottom: 2em;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 9999999999;
-  box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
-  margin-bottom: 2em;
 }
 
 .lead-img {
@@ -841,23 +840,23 @@ strong {
 }
 
 ul.post-categories, .tags {
-  margin: 1rem 0;
   display: block;
+  margin: 1rem 0;
   text-align: center;
 }
 
 ul.post-categories li {
-  list-style:none;
   display: inline-block;
+  list-style:none;
 }
 
 ul.post-categories li a,
 .tags a {
-  display: inline-block;
   background-color: var(--link);
   color: var(--aft2);
-  padding: 0.2rem 1rem;
+  display: inline-block;
   margin-bottom: 0.5rem;
+  padding: 0.2rem 1rem;
 }
 
 ul.post-categories li a:hover,
@@ -870,8 +869,8 @@ ul.post-categories li a:focus,
 
 /* Breadcrumbs */
 .breadcrumb {
-  text-align: center;
   margin: 1.5em 0;
+  text-align: center;
 }
 
 .breadcrumb a, .breadcrumb span {
@@ -880,8 +879,8 @@ ul.post-categories li a:focus,
 
 .breadcrumb a::after {
   content: '>';
-  padding: 0 0.5rem 0 0.5em;
   color: var(--fore);
+  padding: 0 0.5rem 0 0.5em;
 }
 
 /* Video */
@@ -892,20 +891,21 @@ ul.post-categories li a:focus,
 }
 
 .yt-video > * {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 }
 
 .yt-video .play-icon {
-  font-size: 5em;
-  color: var(--foreA);
-  box-shadow: 0px 12px 24px -12px rgb(0 0 0 / 80%);
   background-image: url(https://img.youtube.com/vi/VOWnhMxJMMk/0.jpg);
   background-position: center;
   background-size: cover;
+  border-radius: 5px;
+  box-shadow: 0px 12px 24px -12px rgb(0 0 0 / 80%);
+  color: var(--foreA);
+  font-size: 5em;
 }
 
 .yt-video .title {
@@ -918,32 +918,32 @@ ul.post-categories li a:focus,
 
 /* Social Icons */
 .social-icons ul {
-  text-align: center;
   padding: 0 0.5em 0 0;
+  text-align: center;
 }
 
 .social-icons ul li {
-  margin: 1em auto;
   display: inline-block;
   list-style: none;
+  margin: 1em auto;
 }
 
 .social-icons ul li a {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
+  border-radius: 50%;
   color: var(--fore);
+  display: inline-block;
   font-family: 'g-icon';
   font-size: 2rem;
+  height: 2rem;
   line-height: 2rem;
-  text-align: center;
-  border-radius: 50%;
   overflow: hidden;
+  text-align: center;
+  width: 2rem;
 }
 
 .social-icons ul li a:hover, .social-icons ul li a:hover {
-  color: var(--link);
   background-color: initial;
+  color: var(--link);
 } 
 
 .social-icons ul li.github a:before {
