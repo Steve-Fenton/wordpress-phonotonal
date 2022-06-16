@@ -5,13 +5,17 @@ header('X-Frame-Options: SAMEORIGIN');
 header('Cache-Control: max-age=' . $cacheTime . ', public');
 header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + $cacheTime)); 
 
+function wp_get_current_url() {
+	return home_url($_SERVER['REQUEST_URI']);
+}
+
 $title = wp_title('', false);
 if (strlen($title) == 0) {
 	$title = 'Home';
 }
 
 $author_name = get_bloginfo('name');
-$canonical = get_site_url();
+$canonical = explode('?', wp_get_current_url())[0];
 
 $qry = get_queried_object();
 
