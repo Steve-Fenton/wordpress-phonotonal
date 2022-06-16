@@ -76,3 +76,12 @@ function clickHandler (event) {
 }
 
 document.addEventListener('click', clickHandler);
+
+// External Links
+
+document.querySelectorAll('a').forEach(function (anchor) {
+    var regex = new RegExp('/' + window.location.host + '/');
+    if(!regex.test(anchor.href)) {
+        anchor.setAttribute('target', '_blank');
+    }
+});
