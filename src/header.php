@@ -23,7 +23,7 @@ if ($qry) {
 	switch ($qry_type) {
 		case 'WP_Post':
 			if (strlen($meta_description) == 0) {
-				$meta_description = wp_trim_words(get_the_excerpt($qry), 25);
+				$meta_description = wp_trim_words(get_the_excerpt($qry), 20);
 			}
 		
 			if (strlen($meta_keywords) == 0) {
