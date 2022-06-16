@@ -37,7 +37,7 @@ if ($qry) {
 			break;
 		case 'WP_Term':
 			if (strlen($meta_description) == 0) {
-				$meta_description = wp_trim_words($qry->description, 25);
+				$meta_description = wp_trim_words($qry->description, 20);
 			}
 		
 			if (strlen($meta_keywords) == 0) {
@@ -48,7 +48,7 @@ if ($qry) {
 			break;
 		case 'WP_User':
 			if (strlen($meta_description) == 0) {
-				$meta_description = wp_trim_words($qry->user_description, 25);
+				$meta_description = wp_trim_words($qry->user_description, 20);
 			}
 		
 			if (strlen($meta_keywords) == 0) {
