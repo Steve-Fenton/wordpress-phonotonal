@@ -89,9 +89,26 @@ if ($qry) {
 </header>
 <nav class="sticky">
 	<ul>
-		<li><a href="https://www.phonotonal.com/section/music/">music</a></li>
-		<li><a href="https://www.phonotonal.com/section/words/">words</a></li>
-		<li><a href="https://www.phonotonal.com/section/culture/">culture</a></li>
+	<?php 			
+	$slugs = array('music', 'words', 'culture');
+	foreach ($slugs as $slug) :
+		$c = get_category_by_slug($slug); 
+		$args = array('orderby' => 'name', 'parent' => $c->term_id);
+		$categories = get_categories($args);
+	?>
+		<li><a href="<?php echo get_category_link($c) ?>"><?php echo $c->name ?></a>
+		<?php if ($categories) : ?>
+		<ul>
+			<li><a href="<?php echo get_category_link($c) ?>" class="button">All <?php echo $c->name ?></a></li>
+		<?php foreach ($categories as $sub) : ?>
+			<li><a href="<?php echo get_category_link($sub) ?>" class="button"><?php echo $sub->name ?></a></li>
+		<?php endforeach; ?>
+		</ul>
+		<?php endif; ?>
+	 	</li>
+	<?php
+	endforeach;
+	?>
 	</ul>
 </nav>
 
