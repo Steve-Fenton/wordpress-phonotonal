@@ -13,6 +13,32 @@
 		</form>
 	</div>
 	<div class="footer-grid">
+
+		<div>
+			<h3>Recent Posts</h3>
+			<ul>
+			<?php
+				$args = array( 'numberposts' => '10', 'post_status' => 'publish' );
+				$recent_posts = wp_get_recent_posts($args);
+				foreach( $recent_posts as $recent ){
+					echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
+				}
+			?>
+			</ul>
+		</div>
+		
+		<div>
+			<h3>Categories</h3>
+			<ul>
+				<?php
+					$args = array('orderby' => 'name', 'parent' => 0);
+					$categories = get_categories( $args );
+					foreach ( $categories as $category ) {
+						echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
+					}
+				?>
+			</ul>
+		</div>
 		
 		<div>
 			<h3>Pages</h3>
@@ -30,32 +56,6 @@
 				}
 			?>
 			</ul> 
-		</div>
-		
-		<div>
-			<h3>Categories</h3>
-			<ul>
-				<?php
-					$args = array('orderby' => 'name', 'parent' => 0);
-					$categories = get_categories( $args );
-					foreach ( $categories as $category ) {
-						echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
-					}
-				?>
-			</ul>
-		</div>
-		
-		<div>
-			<h3>Recent Posts</h3>
-			<ul>
-			<?php
-				$args = array( 'numberposts' => '10', 'post_status' => 'publish' );
-				$recent_posts = wp_get_recent_posts($args);
-				foreach( $recent_posts as $recent ){
-					echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
-				}
-			?>
-			</ul>
 		</div>
 		
 	</div>

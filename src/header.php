@@ -89,7 +89,6 @@ if ($qry) {
 </header>
 <nav class="sticky">
 	<ul>
-		<li><a href="https://www.phonotonal.com/">home</a></li>
 		<li><a href="https://www.phonotonal.com/section/music/">music</a></li>
 		<li><a href="https://www.phonotonal.com/section/words/">words</a></li>
 		<li><a href="https://www.phonotonal.com/section/culture/">culture</a></li>

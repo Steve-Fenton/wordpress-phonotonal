@@ -735,12 +735,20 @@ strong {
 
 /* Wordpress */
 
+.has-small-font-size {
+  font-size: 0.8rem;
+}
+
 .has-medium-font-size {
-  font-size: 1.2em;
+  font-size: 1.4rem;
 }
 
 .wp-block-image {
   text-align: center;
+}
+
+.wp-container-2 figure {
+  max-width: calc(50% - 0.3rem);
 }
 
 /* Other Styles */
@@ -829,6 +837,20 @@ strong {
   position: sticky;
   top: 0;
   z-index: 9999999999;
+}
+
+.sub-cat {
+  list-style: none;
+  text-align: center;
+}
+
+.sub-cat li {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.sub-cat li a.button {
+  margin: 0;
 }
 
 .lead-img {
