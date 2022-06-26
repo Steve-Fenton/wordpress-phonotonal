@@ -129,10 +129,6 @@ blockquote:before {
   vertical-align: -0.5em;
 }
 
-blockquote p {
-  display: inline;
-}
-
 blockquote cite {
   display: block;
   font-size: 0.8rem;
