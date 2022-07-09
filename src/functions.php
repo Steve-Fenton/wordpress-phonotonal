@@ -65,6 +65,14 @@ function custom_theme_setup() {
 }
 add_action('after_setup_theme', 'custom_theme_setup');
 
+function fenton_change_author_role(){
+    global $wp_roles;
+    $wp_roles->remove_cap( 'author', 'delete_posts' );
+    $wp_roles->remove_cap( 'author', 'delete_published_posts' );
+ 
+}
+add_action('init', 'fenton_change_author_role');
+
 function remove_image_size_attributes($image) {
     return preg_replace( '/(width|height)="\d*"\s/', '', $image);
 }
