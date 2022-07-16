@@ -80,8 +80,9 @@ document.addEventListener('click', clickHandler);
 // External Links
 
 document.querySelectorAll('a').forEach(function (anchor) {
-    var regex = new RegExp('/' + window.location.host + '/');
-    if(!regex.test(anchor.href)) {
+    var isInternal = anchor.href.startsWith('https://www.phonotonal.com') || anchor.href.startsWith('/');
+    
+    if (!isInternal) {
         anchor.setAttribute('target', '_blank');
     }
 });
