@@ -91,8 +91,13 @@ if ($qry) {
 			break;
 	}
 
-	$title_parts[] = get_bloginfo('name');
 }
+
+if (count($title_parts) == 0) {
+	$title_parts[] = 'Home';
+}
+
+$title_parts[] = get_bloginfo('name');
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head <?php language_attributes(); ?>>
