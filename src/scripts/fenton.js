@@ -80,7 +80,8 @@ document.addEventListener('click', clickHandler);
 // External Links
 
 document.querySelectorAll('a').forEach(function (anchor) {
-    var isInternal = anchor.href.startsWith('https://www.phonotonal.com') || anchor.href.startsWith('/');
+    var home = document.location.protocol + '//' + document.location.hostname + '/';
+    var isInternal = anchor.href.startsWith(home) || anchor.href.startsWith('/');
     
     if (!isInternal) {
         anchor.setAttribute('target', '_blank');
