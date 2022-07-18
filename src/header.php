@@ -37,11 +37,7 @@ if ($qry) {
 			$post_title = get_the_title($qry);
 			$parts = explode('&#8211;', $post_title);
 			
-			if (count($parts) > 1) {
-				$title_parts[] = trim($parts[1]);
-			}
-			$title_parts[] = trim($parts[0]);
-
+			$title_parts[] = $post_title;
 			$post_category = get_the_category($qry->ID);
 			uasort($post_category, 'cat_sort_reverse');
 			foreach($post_category as $post_cat) {
