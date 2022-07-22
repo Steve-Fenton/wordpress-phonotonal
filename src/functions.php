@@ -91,3 +91,16 @@ function deregister_scripts() {
 	wp_dequeue_style('global-styles');
 }
 add_action('wp_enqueue_scripts', 'deregister_scripts');
+
+// Add Image to RSS
+function fenton_rss_post_thumbnail( $content ) {
+	global $post;
+	if ( has_post_thumbnail( $post->ID ) ) {
+		$content = '<p>' . get_the_post_thumbnail($post->ID, 'thumbnail') . '</p>' . $content;
+	}
+
+	return $content;
+}
+
+add_filter( 'the_excerpt_rss', 'fenton_rss_post_thumbnail' );
+add_filter( 'the_content_feed', 'fenton_rss_post_thumbnail' );
