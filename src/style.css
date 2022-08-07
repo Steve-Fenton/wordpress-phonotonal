@@ -635,9 +635,6 @@ strong {
     text-align: center;
   }
 
-  main {
-    margin: 0 1rem;
-  }
 }
 
 /* Timeline */
@@ -836,6 +833,17 @@ strong {
   margin: 1rem auto 2rem auto;
   max-width: 35rem;
   padding: 1rem;
+}
+
+@media (max-width: 625px) {
+  .bgfonk {
+    background-size: 300% auto;
+  }
+
+  .bgfonk .single-item article.post {
+    margin: 0 1rem;
+  }
+
 }
 
 .single-item article.post h1 {
