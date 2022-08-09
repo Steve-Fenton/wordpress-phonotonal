@@ -18,12 +18,12 @@ function cat_sort_reverse($a, $b) {
 
 $title_parts = array();
 
-$title = wp_title('', false);
-if (strlen($title) == 0) {
-	$title = 'Home';
-}
-
 $author_name = get_bloginfo('name');
+
+$paged = get_query_var( 'paged', 1 );
+$page_description = $paged > 1
+	? ' (Page ' . $paged . ')'
+	: '';
 
 $qry = get_queried_object();
 
@@ -55,7 +55,8 @@ if ($qry) {
 			$author_name = get_the_author_meta('first_name', $qry->post_author) . ' ' . get_the_author_meta('last_name', $qry->post_author);
 			break;
 		case 'WP_Term':
-			$title_parts[] = $qry->name;
+			$title_parts[] = $qry->name . $page_description;
+
 
 			if ($qry->taxonomy == 'category') {
 				$parentCatName = get_cat_name($qry->parent);
@@ -74,7 +75,7 @@ if ($qry) {
 			break;
 		case 'WP_User':
 			$user_display_name = get_the_author_meta('display_name', $qry->ID);
-			$title_parts[] = $user_display_name;
+			$title_parts[] = $user_display_name . $page_description;
 
 			if (strlen($meta_description) == 0) {
 				$meta_description = wp_trim_words($qry->user_description, 20);
@@ -90,7 +91,7 @@ if ($qry) {
 }
 
 if (count($title_parts) == 0) {
-	$title_parts[] = 'Home';
+	$title_parts[] = 'Home' . $page_description;
 }
 
 $title_parts[] = get_bloginfo('name');
