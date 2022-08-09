@@ -102,9 +102,9 @@ $title_parts[] = get_bloginfo('name');
 	<title><?php echo preg_replace('/\s+/', ' ', implode(' | ', $title_parts)) ?></title>
 	<meta name="description" content="<?php
 	if ($qry) {
-        echo str_replace('"', '', $meta_description);
+        echo str_replace('"', '', $meta_description . $page_description);
     } else {
-        bloginfo('name'); echo " - "; bloginfo('description');
+        bloginfo('name'); echo ' - '; bloginfo('description');
     }
 	?>" />
 	<meta name="keywords" content="<?php
