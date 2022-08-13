@@ -490,7 +490,7 @@ strong {
   padding: 0 2em;
 }
 
-.constrain-more h1 {
+.constrain-more h1, main > h1 {
   text-align: center;
 }
 
@@ -542,14 +542,11 @@ strong {
 
 .paging {
   margin: 4em 0;
-}
-
-.paging > div {
   text-align: center;
 }
 
-.paging > div a {
-  padding: 0.5em 1em;
+.paging .nav-links > * {
+  padding: 0.5em 0.8em;
 }
 
 .article-grid {

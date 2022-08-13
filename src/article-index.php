@@ -76,10 +76,9 @@
 
 	<?php endwhile; ?>
 </div>
-	
-<div class="simple-grid paging">
-	<div class="prev"><?php next_posts_link( '&lt; Older Posts' ); ?></div>
-	<div class="next"><?php previous_posts_link( 'Newer Posts &gt;' ); ?></div>
+
+<div class="paging">
+	<?php the_posts_pagination( array( 'mid_size' => 2,'prev_text' => '&lt;', 'next_text' => '&gt;' ) ); ?>
 </div>
 
 <?php else : ?>
