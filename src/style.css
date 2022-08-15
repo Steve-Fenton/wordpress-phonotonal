@@ -518,6 +518,10 @@ strong {
     ". .";
 }
 
+.compact-heading h2 {
+  margin: 0 0 1.5rem 0;
+}
+
 .mini > div {
   background-color: var(--aft);
   box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);

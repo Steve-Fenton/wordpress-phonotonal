@@ -79,6 +79,39 @@ get_header(); ?>
 							<?php echo get_the_tag_list( '&nbsp;', ' ' ); ?>
 						</div>
 
+						<?php
+							$tag_ids = wp_get_post_tags($post->ID);
+
+							if (count($tag_ids) == 1) {
+								$current_tag = $tag_ids[0]->slug;
+								$current_tagname = $tag_ids[0]->name;
+								$current_tagtitle = $tag_ids[0]->name . ' - ';
+
+								$tag_posts = get_posts(array(
+									'numberposts' => 4,
+									'tag' => $current_tag,
+									'exclude' => array($current_post_id)
+								));
+								
+								if ($tag_posts) {
+						?>
+						<div class="boxed compact-heading">
+							<h2><?php echo $current_tagname ?> Articles</h2>
+							<ul>
+								<?php foreach ($tag_posts as $post) : ?>
+								<li>
+									<a href="<?php echo get_permalink($post) ?>">
+										<?php echo $post->post_title ?>
+									</a>
+								</li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
+						<?php
+								}
+							}
+						?>
+
 						<div class="boxed">
 							<div class="asym-grid">
 								<?php
