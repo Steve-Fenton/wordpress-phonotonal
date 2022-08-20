@@ -75,6 +75,15 @@ get_header(); ?>
 							<span><?php echo $headline ?></span>
 						</div>
 
+						<?php
+							// Grab all the user info before we mess with other queries
+							$user_email = get_the_author_meta( 'user_email' );
+							$user_description = get_the_author_meta( 'user_description', $post->post_author );
+							$user_name = get_author_name();
+							$user_link = get_author_posts_url( get_the_author_meta( 'ID' ) );
+							$user_avatar = get_field('avatar', 'user_' . $post->post_author);
+						?>
+
 						<div class="tags">
 							<?php echo get_the_tag_list( '&nbsp;', ' ' ); ?>
 						</div>
@@ -114,13 +123,6 @@ get_header(); ?>
 
 						<div class="boxed">
 							<div class="asym-grid">
-								<?php
-								$user_email = get_the_author_meta( 'user_email' );
-								$user_description = get_the_author_meta( 'user_description', $post->post_author );
-								$user_name = get_author_name();
-								$user_link = get_author_posts_url( get_the_author_meta( 'ID' ) );
-								$user_avatar = get_field('avatar', 'user_' . $post->post_author);
-								?>
 								<div>
 									<p>Written by <a href="<?php echo $user_link ?>"><?php echo $user_name ?></a>
 									on <time datetime="<?php the_time('Y-m-d\TH:i:sP'); ?>"><?php the_time(get_option('date_format')); ?></time></p>
