@@ -16,6 +16,7 @@ get_header(); ?>
 	$title = $headline;
 	$parts = explode('&#8211;', $title);
 	if (count($parts) == 2) {
+		$expected_name = trim($parts[0]);
 		$title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
 	}
 
@@ -39,6 +40,16 @@ get_header(); ?>
 			return 0;
 		}
 		return ($a->parent < $b->parent) ? -1 : 1;
+	}
+
+	function filter_tags($a) {
+		global $expected_name;
+		
+		if ($expected_name) {
+			return $a->name == $expected_name;
+		}
+
+		return true;
 	}
 ?>
 	<div class="bgfonk" style="background-image: url('<?php echo $image ?>');">
@@ -89,12 +100,18 @@ get_header(); ?>
 						</div>
 
 						<?php
-							$tag_ids = wp_get_post_tags($post->ID);
+							$tag_ids = array_filter(wp_get_post_tags($post->ID), 'filter_tags');
+							$selected_tag = NULL;
 
-							if (count($tag_ids) == 1) {
-								$current_tag = $tag_ids[0]->slug;
-								$current_tagname = $tag_ids[0]->name;
-								$current_tagtitle = $tag_ids[0]->name . ' - ';
+							foreach ($tag_ids as $x) {
+								$selected_tag = $x;
+								break;
+							}
+
+							if ($selected_tag) {
+								$current_tag = $selected_tag->slug;
+								$current_tagname = $selected_tag->name;
+								$current_tagtitle = $selected_tag->name . ' - ';
 
 								$tag_posts = get_posts(array(
 									'numberposts' => 4,
