@@ -141,6 +141,17 @@ function fenton_cat_sort($a, $b) {
 	return ($a->parent < $b->parent) ? -1 : 1;
 }
 
+function fenton_get_text_tags($tags) {
+	// Gets simple text tags for use in structured data
+	$text_tags = [];
+	if ($tags) {
+		foreach ($tags as $tag) {
+			$text_tags[] = $tag->name;
+		}
+	}
+	return $text_tags;
+}
+
 // Dynamic Object
 
 class dynamic {
