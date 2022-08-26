@@ -104,3 +104,61 @@ function fenton_rss_post_thumbnail( $content ) {
 
 add_filter( 'the_excerpt_rss', 'fenton_rss_post_thumbnail' );
 add_filter( 'the_content_feed', 'fenton_rss_post_thumbnail' );
+
+// Utility Functions (Used in Templates)
+
+function fenton_split_title($title) {
+	// This lets us split the title by the dash
+	// so we can display the first part differently to the second part
+	$parts = explode('&#8211;', $title);
+
+	if (count($parts) == 2) {
+		$expected_name = trim($parts[0]);
+		$title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
+	}
+
+	return $title;
+}
+
+function fenton_creator_name($title) {
+	// Get's the creator name from the title, this lets us
+	// filter the tags when we want to show articles related to
+	// the same creator (i.e. band or writer)
+	$expected_name = '';
+	$parts = explode('&#8211;', $title);
+
+	if (count($parts) == 2) {
+		$expected_name = trim($parts[0]);
+	}
+
+	return $expected_name;
+}
+
+function fenton_cat_sort($a, $b) {
+	if ($a->parent == $b->parent) {
+		return 0;
+	}
+	return ($a->parent < $b->parent) ? -1 : 1;
+}
+
+// Dynamic Object
+
+class dynamic {
+    public function __construct(array $args = array()) {
+        if (!empty($args)) {
+            foreach ($args as $property => $argument) {
+                $this->{$property} = $argument;
+            }
+        }
+    }
+
+    public function __call($method, $args) {
+		// Note: method argument 0 will always referred to the main class ($this).
+        $args = array_merge(array("dynamic" => $this), $args);
+        if (isset($this->{$method}) && is_callable($this->{$method})) {
+            return call_user_func_array($this->{$method}, $args);
+        } else {
+            throw new Exception("Fatal error: Call to undefined method dynamic::{$method}()");
+        }
+    }
+}

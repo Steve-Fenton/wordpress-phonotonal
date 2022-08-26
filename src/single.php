@@ -5,61 +5,58 @@
 get_header(); ?>
 <!-- *single* -->
 <?php
-	$current_cat_id = 0;
-	$current_post_id = get_the_ID();
-	$current_post_date = get_the_time('Y-m-d');
-	$thumbnail_id = get_post_thumbnail_id( $post->ID );
-	$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-	$image = wp_get_attachment_image_url( $thumbnail_id, 'medium' );
+	$model = new dynamic();
+	$model->post_id = get_the_ID();
+	$model->post_date = get_the_time('Y-m-d');
+	$model->post_url = get_permalink();
+	$model->post_headline = get_the_title();
+	$model->post_title = fenton_split_title($model->post_headline);
+	$model->creator = fenton_creator_name($model->post_headline);
 
-	$headline = get_the_title();
-	$title = $headline;
-	$parts = explode('&#8211;', $title);
-	if (count($parts) == 2) {
-		$expected_name = trim($parts[0]);
-		$title = $parts[0] . '<br /><em>' . $parts[1] . '</em>';
+	// Tags
+	$model->tags = get_the_tags();
+	$model->tags_text = [];
+
+	if ($model->tags) {
+		foreach( $model->tags as $tag ) {
+			$model->tags_text[] = $tag->name;
+		}
 	}
 
-	$textTags = [];
+	// Image
+	$model->thumbnail_id = get_post_thumbnail_id($post->ID);
+	$model->thumbnail_alt = get_post_meta($model->thumbnail_id, '_wp_attachment_image_alt', true);
+	$model->thumbnail_image = wp_get_attachment_image_url( $model->thumbnail_id, 'medium' );
 
+	$current_cat_id = 0;
+
+	
 	$firstCat = '';
 	$firstCatLink = '';
-
+	
 	$secondCat = '';
 	$secondCatLink = '';
+	
 
-	$tags = get_the_tags();
-	if ($tags) {
-		foreach( $tags as $tag ) {
-			$textTags[] = $tag->name;
-		}
-	}
-
-	function cat_sort($a, $b) {
-		if ($a->parent == $b->parent) {
-			return 0;
-		}
-		return ($a->parent < $b->parent) ? -1 : 1;
-	}
 
 	function filter_tags($a) {
-		global $expected_name;
+		global $model;
 		
-		if ($expected_name) {
-			return $a->name == $expected_name;
+		if ($model->creator) {
+			return $a->name == $model->creator;
 		}
 
 		return true;
 	}
 ?>
-	<div class="bgfonk" style="background-image: url('<?php echo $image ?>');">
+	<div class="bgfonk" style="background-image: url('<?php echo $model->thumbnail_image ?>');">
 		<main class="single-item">
 			<?php if (have_posts()) : ?>
 				<?php while (have_posts()) : the_post(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-						<img class="lead-img" src="<?php echo $image ?>" alt="<?php echo $alt ?>" />
-						<h1><?php echo $title ?></h1>
+						<img class="lead-img" src="<?php echo $model->thumbnail_image ?>" alt="<?php echo $model->thumbnail_alt ?>" />
+						<h1><?php echo $model->post_title ?></h1>
 						
 						<?php the_content(); ?>
 
@@ -68,7 +65,7 @@ get_header(); ?>
 							$cats = get_the_category();
 							if ($cats) {
 								echo '<a href="/">Phonotonal</a>';
-								uasort($cats, 'cat_sort');
+								uasort($cats, 'fenton_cat_sort');
 								foreach($cats as $cat) {
 									if ($firstCat == '') {
 										$current_cat_id = $cat->term_id;
@@ -78,12 +75,12 @@ get_header(); ?>
 										$secondCat = $cat->cat_name;
 										$secondCatLink = get_category_link($cat);
 									}
-									$textTags[] = $cat->cat_name;
+									$model->tags_text[] = $cat->cat_name;
 									echo '<a href="' . get_category_link($cat) . '">' . $cat->cat_name . '</a>';
 								}
 							}
 							?>
-							<span><?php echo $headline ?></span>
+							<span><?php echo $model->post_headline ?></span>
 						</div>
 
 						<?php
@@ -93,6 +90,8 @@ get_header(); ?>
 							$user_name = get_author_name();
 							$user_link = get_author_posts_url( get_the_author_meta( 'ID' ) );
 							$user_avatar = get_field('avatar', 'user_' . $post->post_author);
+							$article_computer_time = get_the_time('Y-m-d\TH:i:sP');
+							$article_human_time = get_the_time(get_option('date_format'));
 						?>
 
 						<div class="tags">
@@ -116,7 +115,7 @@ get_header(); ?>
 								$tag_posts = get_posts(array(
 									'numberposts' => 4,
 									'tag' => $current_tag,
-									'exclude' => array($current_post_id)
+									'exclude' => array($model->post_id)
 								));
 								
 								if ($tag_posts) {
@@ -142,7 +141,7 @@ get_header(); ?>
 							<div class="asym-grid">
 								<div>
 									<p>Written by <a href="<?php echo $user_link ?>"><?php echo $user_name ?></a>
-									on <time datetime="<?php the_time('Y-m-d\TH:i:sP'); ?>"><?php the_time(get_option('date_format')); ?></time></p>
+									on <time datetime="<?php echo $article_computer_time ?>"><?php echo $article_human_time ?></time></p>
 									<div>
 										<?php echo $user_description ?>
 									</div>
@@ -166,15 +165,15 @@ get_header(); ?>
 							get_posts(array(
 								'numberposts' => 2,
 								'category' => $current_cat_id,
-								'exclude' => array($current_post_id),
-								'date_query' => array('before' => $current_post_date)
+								'exclude' => array($model->post_id),
+								'date_query' => array('before' => $model->post_date)
 							)),
 							// Part two - these will change - most recent posts in the same cat
 							get_posts(array(
 								'numberposts' => 2,
 								'category' => $current_cat_id,
-								'exclude' => array($current_post_id),
-								'date_query' => array('after' => $current_post_date)
+								'exclude' => array($model->post_id),
+								'date_query' => array('after' => $model->post_date)
 							))
 						);
 						?>
@@ -214,12 +213,12 @@ get_header(); ?>
       "@type": "Article",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "<?php echo get_permalink() ?>"
+        "@id": "<?php echo $model->post_url ?>"
       },
-      "headline": "<?php echo $headline ?>",
-	  "keywords": "<?php echo implode(',', $textTags) ?>",
+      "headline": "<?php echo $model->post_headline ?>",
+	  "keywords": "<?php echo implode(',', $model->tags_text) ?>",
       "image": [
-        "<?php echo $image ?>"
+        "<?php echo $model->thumbnail_image ?>"
       ],
       "datePublished": "<?php the_time('Y-m-d') ?>",
       "dateModified": "<?php the_modified_date('Y-m-d') ?>",
@@ -263,8 +262,8 @@ get_header(); ?>
       },<?php endif; ?>{
         "@type": "ListItem",
         "position": <?php echo ++$position ?>,
-        "name": "<?php echo $headline ?>",
-        "item": "<?php echo get_permalink() ?>"
+        "name": "<?php echo $model->post_headline ?>",
+        "item": "<?php echo $model->post_url ?>"
       }]
     }
     </script>
