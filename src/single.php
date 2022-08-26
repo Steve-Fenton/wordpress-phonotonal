@@ -14,7 +14,7 @@
 	$model->content = apply_filters('the_content', get_the_content());
 	
 	// Image
-	$model->thumbnail_id = get_post_thumbnail_id($post->ID);
+	$model->thumbnail_id = get_post_thumbnail_id($model->post_id);
 	$model->thumbnail_alt = get_post_meta($model->thumbnail_id, '_wp_attachment_image_alt', true);
 	$model->thumbnail_image = wp_get_attachment_image_url( $model->thumbnail_id, 'medium' );
 
@@ -85,11 +85,11 @@
 						</div>
 
 						<div class="tags">
-							<?php echo get_the_tag_list( '&nbsp;', ' ' ); ?>
+							<?php echo get_the_tag_list('', ' ', '', $model->post_id); ?>
 						</div>
 
 						<?php
-							$tag_ids = array_filter(wp_get_post_tags($post->ID), 'filter_tags');
+							$tag_ids = array_filter(wp_get_post_tags($model->post_id), 'filter_tags');
 							$selected_tag = NULL;
 
 							foreach ($tag_ids as $x) {
@@ -141,12 +141,6 @@
 								</div>
 							</div>
 						</div>
-						
-						<?php if(comments_open()) : ?>
-							<span class="comments-link">
-								<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); ?>
-							</span>
-						<?php endif; ?>
 
 						<?php
 						// Related posts						
@@ -179,14 +173,8 @@
 							</div>
 							<?php endforeach; ?>
 						</div>
-
 					</article>
-
 				<?php endwhile; ?>
-				<?php if (comments_open() || '0' != get_comments_number()) comments_template( '', true ); ?>
-				
-
-
 			<?php else : ?>
 			<article class="post error">
 				<h2>Error 404-Page NOT Found</h2>
@@ -227,7 +215,8 @@
       }
     }
     </script>
-	<?php 
+	<?php
+		// The bread crumb position tracker
 		$position = 0;
 	?>
     <script type="application/ld+json">
