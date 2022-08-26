@@ -694,6 +694,10 @@ strong {
   width: 15px;
 }
 
+.timeline .event ol {
+  margin: 0;
+}
+
 /* Gallery */
 
 .gallery img {
