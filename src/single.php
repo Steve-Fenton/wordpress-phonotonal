@@ -19,10 +19,11 @@
 	$model->thumbnail_image = wp_get_attachment_image_url( $model->thumbnail_id, 'medium' );
 
 	// Post metadata
-	$model->user_description = get_the_author_meta('user_description', $post->post_author);
-	$model->user_name = get_author_name();
-	$model->user_link = get_author_posts_url( get_the_author_meta( 'ID' ) );
-	$model->user_avatar = get_field('avatar', 'user_' . $post->post_author);
+	$model->user_id = $post->post_author;
+	$model->user_description = get_the_author_meta('user_description', $model->user_id);
+	$model->user_name = get_author_name($model->user_id);
+	$model->user_link = get_author_posts_url($model->user_id);
+	$model->user_avatar = get_field('avatar', 'user_' . $model->user_id);
 
 	// Tags
 	$model->tags = get_the_tags();
