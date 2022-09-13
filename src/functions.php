@@ -102,6 +102,11 @@ function fenton_rss_post_thumbnail( $content ) {
 	return $content;
 }
 
+function fenton_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'fenton_custom_excerpt_length', 22 );
+
 add_filter( 'the_excerpt_rss', 'fenton_rss_post_thumbnail' );
 add_filter( 'the_content_feed', 'fenton_rss_post_thumbnail' );
 
