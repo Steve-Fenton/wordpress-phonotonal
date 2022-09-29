@@ -36,6 +36,17 @@
 			$cats = get_the_category();
 			?>
 
+			<?php
+			if ($cats) {
+				uasort($cats, 'cat_sort');
+				echo '<ol class="funky-cat">';
+				foreach($cats as $cat) {
+					echo '<li><a href="' . get_category_link($cat) . '">' . $cat->cat_name . '</a></li>';
+				}
+				echo '</ol>';
+			}
+			?>
+
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="funky-title">
 			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> /></a>
@@ -53,18 +64,6 @@
 				</h2>
 			<?php } ?>
 			
-			<?php
-			if ($cats) {
-				uasort($cats, 'cat_sort');
-				echo '<ol class="funky-cat">';
-				foreach($cats as $cat) {
-					echo '<li><a href="' . get_category_link($cat) . '">' . $cat->cat_name . '</a></li>';
-				}
-				echo '</ol>';
-			}
-			?>
-			
-
 			<div>
 				<?php the_excerpt(); ?>
 				<div>
