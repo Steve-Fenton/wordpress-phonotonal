@@ -259,7 +259,7 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
   aspect-ratio: 16 / 9;
   filter: brightness(0.75);
   object-fit: cover;
-  transition: all 300ms ease;
+  transition: all 600ms ease;
   width: 100%;
 }
 
