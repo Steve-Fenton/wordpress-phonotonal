@@ -1,3 +1,25 @@
+// Clickable blocks
+var dataAttributeName = 'data-destination';
+
+function setClickableBlocks() {
+    document.querySelectorAll('[' + dataAttributeName + ']').forEach((listItem) => {
+        listItem.style.cursor = 'pointer';
+        listItem.addEventListener('click', handleClickableBlock);
+    });
+}
+
+function handleClickableBlock(e) {
+    const location = this.getAttribute(dataAttributeName);
+
+    if (location) {
+        e.preventDefault();
+        document.location = location;
+        return false;
+    }
+}
+
+setClickableBlocks();
+
 // Article animation
 var articleOptions = {
     root: null,

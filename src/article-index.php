@@ -48,8 +48,10 @@
 			?>
 
 			<?php if ( has_post_thumbnail() ) { ?>
-			<div class="funky-title">
-			    <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> /></a>
+			<div class="funky-title" data-destination="<?php the_permalink(); ?>">
+			    <div class="funky-image">
+					<img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> />
+				</div>
 				<h2>
 					<a href="<?php the_permalink(); ?>">
 						<?php echo $title; ?>
@@ -64,11 +66,8 @@
 				</h2>
 			<?php } ?>
 			
-			<div>
+			<div data-destination="<?php the_permalink(); ?>">
 				<?php the_excerpt(); ?>
-				<div>
-					<a href="<?php the_permalink(); ?>" class="button">Read <?php echo $title; ?></a>
-				</div>
 			</div>
 			
 		</article>
