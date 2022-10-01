@@ -242,7 +242,7 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
   background-color: var(--link);
   background-position: center;
   background-size: cover;
-  border-top: 1.5em solid var(--funk);
+  border-top: 1rem solid var(--funk);
   margin: -1rem -1rem 0 -1rem;
   padding-bottom: 0.001em;
 }
@@ -263,7 +263,8 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
   width: 100%;
 }
 
-.funky-title > .funky-image:hover img, funky-title > .funky-image:focus img {
+.funky-title > .funky-image:hover img,
+funky-title > .funky-image:focus img {
   filter: unset;
   transform: scale(1.2);
 }
@@ -301,16 +302,16 @@ aside h2, aside h3, aside h4, footer h2, footer h3, footer h4 {
 .funky-title h2 {
   background-color: var(--overlayaft);
   text-align: center;
+  margin: 1rem 0;
 }
 
 .funky-title h2 a {
   color: var(--overlayfore);
   display: inline-block;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   max-width: calc(100% - 2em);
-  padding: 0.3em 0;
-  text-align: center;
-  transform: rotate(3deg);
+  padding: 0.2em 2em;
+  transform: rotate(2deg);
 }
 
 .funky-title h2 a em {
