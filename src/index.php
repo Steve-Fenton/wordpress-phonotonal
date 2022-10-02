@@ -7,7 +7,7 @@
 get_header(); ?>
 <!-- *ix* -->
 <main>
-	<h1 class="hidden">Phonotonal - Latest Articles</h1>
+	<h1 class="hidden">Phonotonal - An Alternative Music and Culture Magazine</h1>
 	<?php get_template_part('article', 'index'); ?>
 </main>	
 <?php get_footer(); ?>
