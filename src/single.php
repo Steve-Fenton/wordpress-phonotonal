@@ -68,7 +68,7 @@
 				<?php while (have_posts()) : the_post(); ?>
 					<article id="post-<?php echo $model->post_id ?>" class="<?php echo $model->post_class ?>">
 
-						<img class="lead-img" src="<?php echo $model->thumbnail_image ?>" alt="<?php echo $model->thumbnail_alt ?>" />
+						<img class="lead-img" src="<?php echo $model->thumbnail_image ?>" alt="<?php echo $model->thumbnail_alt ?>" width="560" height="560" />
 						<h1><?php echo $model->post_title ?></h1>
 						
 						<?php echo $model->content ?>

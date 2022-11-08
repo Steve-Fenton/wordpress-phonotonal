@@ -885,6 +885,8 @@ strong {
 
 .lead-img {
   min-width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
 }
 
 .post ul, .post ol {
