@@ -63,14 +63,6 @@ html {
   src: url("font/roboto-slab.ttf");
 }
 
-@font-face {
-  font-display: swap;
-  font-family: "g-icon";
-  font-style: normal;
-  font-weight: normal;
-  src: url("font/genericons-regular-webfont.woff");
-}
-
 /* Styles */
 
 body {
@@ -972,46 +964,28 @@ ul.post-categories li a:focus,
 
 /* Social Icons */
 .social-icons ul {
-  padding: 0 0.5em 0 0;
-  text-align: center;
+  padding: 0 0 3rem 0;
+  display: grid;
+  grid-template-columns: 40px 40px 40px;
+  justify-content: center;
+  list-style: none;
 }
 
 .social-icons ul li {
-  display: inline-block;
-  list-style: none;
-  margin: 1em auto;
+  display: inline;
+  margin: 1em;
 }
 
 .social-icons ul li a {
-  border-radius: 50%;
-  color: var(--fore);
-  display: inline-block;
-  font-family: 'g-icon';
-  font-size: 2rem;
-  height: 2rem;
-  line-height: 2rem;
-  overflow: hidden;
-  text-align: center;
-  width: 2rem;
+  width: 30px;
+  height: 30px;
+  display: block;
+  fill: var(--funk);
+  padding: 5px;
 }
 
-.social-icons ul li a:hover, .social-icons ul li a:hover {
-  background-color: initial;
-  color: var(--link);
-} 
-
-.social-icons ul li.github a:before {
-  content: "\f200";
-}
-
-.social-icons ul li.twitter a:before {
-  content: "\f202";
-}
-
-.social-icons ul li.facebook a:before {
-  content: "\f203";
-}
-
-.social-icons ul li.rss a:before {
-  content: "\f413";
+.social-icons ul li a:hover,
+.social-icons ul li a:focus {
+  fill: var(--link);
+  background-color: unset;
 }
