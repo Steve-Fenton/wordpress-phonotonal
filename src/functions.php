@@ -73,11 +73,11 @@ function fenton_change_author_role(){
 }
 add_action('init', 'fenton_change_author_role');
 
-function remove_image_size_attributes($image) {
-    return preg_replace( '/(width|height)="\d*"\s/', '', $image);
-}
-add_filter('post_thumbnail_html', 'remove_image_size_attributes', 10);
-add_filter('image_send_to_editor', 'remove_image_size_attributes', 10);
+// function remove_image_size_attributes($image) {
+//     return preg_replace( '/(width|height)="\d*"\s/', '', $image);
+// }
+// add_filter('post_thumbnail_html', 'remove_image_size_attributes', 10);
+// add_filter('image_send_to_editor', 'remove_image_size_attributes', 10);
 
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('admin_print_scripts', 'print_emoji_detection_script');
