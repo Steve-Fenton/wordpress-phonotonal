@@ -36,17 +36,27 @@ function fenton_remove_type_attribute($tag, $handle) {
 add_filter('style_loader_tag', 'fenton_remove_type_attribute', 10, 2);
 add_filter('script_loader_tag', 'fenton_remove_type_attribute', 10, 2);
 
-function fenton_scripts()  { 
+function deregister_scripts() {
+    global $wp_scripts, $wp_styles;
+
+    foreach($wp_scripts->registered as $registered)
+        if(strpos($registered->src,'/wp-admin/')===FALSE)
+            wp_deregister_script($registered->handle);
+
+    foreach($wp_styles->registered as $registered)
+        if(strpos($registered->src,'/wp-admin/')===FALSE)
+            wp_deregister_style($registered->handle);
+
 	// get the theme directory style.css and link to it in the header
 	wp_enqueue_style('fenton-style', get_template_directory_uri() . '/style.css', '10000', null);
 
 	// add theme scripts
 	wp_enqueue_script('fenton-script', get_template_directory_uri() . '/scripts/fenton.js', array(), null, true );
 }
-add_action('wp_enqueue_scripts', 'fenton_scripts'); // Register this fxn and allow Wordpress to call it automatcally in the header
+add_action('wp_enqueue_scripts', 'deregister_scripts');
 
 function my_theme_add_editor_styles() {
-    add_editor_style('style.css');
+    add_editor_style(get_template_directory_uri() . 'style.css');
 }
 add_action('admin_init', 'my_theme_add_editor_styles');
 
@@ -79,18 +89,12 @@ add_action('init', 'fenton_change_author_role');
 // add_filter('post_thumbnail_html', 'remove_image_size_attributes', 10);
 // add_filter('image_send_to_editor', 'remove_image_size_attributes', 10);
 
-remove_action('wp_head', 'print_emoji_detection_script', 7);
-remove_action('admin_print_scripts', 'print_emoji_detection_script');
-remove_action('wp_print_styles', 'print_emoji_styles');
-remove_action('admin_print_styles', 'print_emoji_styles'); 
+// remove_action('wp_head', 'print_emoji_detection_script', 7);
+// remove_action('admin_print_scripts', 'print_emoji_detection_script');
+// remove_action('wp_print_styles', 'print_emoji_styles');
+// remove_action('admin_print_styles', 'print_emoji_styles'); 
 
-function deregister_scripts() {
-	wp_deregister_script('jquery');
-	wp_dequeue_style('wp-block-library-css');
-	wp_dequeue_style('wp-block-library');
-	wp_dequeue_style('global-styles');
-}
-add_action('wp_enqueue_scripts', 'deregister_scripts');
+
 
 // Add Image to RSS
 function fenton_rss_post_thumbnail( $content ) {
