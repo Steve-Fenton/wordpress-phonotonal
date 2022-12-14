@@ -55,14 +55,6 @@ html {
   src: url("font/roboto-condensed.ttf");
 }
 
-@font-face {
-  font-display: swap;
-  font-family: "r-slab";
-  font-style: normal;
-  font-weight: normal;
-  src: url("font/roboto-slab.ttf");
-}
-
 /* Styles */
 
 body {
@@ -181,7 +173,7 @@ small {
 /* Headings */
 
 h1, h2, h3, h4, h5, h6, a.title {
-  font-family: 'r-slab', sans-serif;
+  font-family: 'r-condensed', sans-serif;
   font-weight: normal;
   letter-spacing: 0;
   line-height: 1em;

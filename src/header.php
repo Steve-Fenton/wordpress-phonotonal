@@ -122,7 +122,7 @@ $title_parts[] = get_bloginfo('name');
 <body <?php body_class(); ?>>
 
 <header class="constrain">
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="title"><img src="<?php echo get_template_directory_uri().'/lock-up-600.png'; ?>" alt="<?php bloginfo( 'name' ); ?>" width="600" height="170" /></a>
+	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="title"><img src="<?php echo get_template_directory_uri().'/lock-up-600.webp'; ?>" alt="<?php bloginfo( 'name' ); ?>" width="600" height="170" /></a>
 </header>
 <nav class="sticky">
 	<ul>
