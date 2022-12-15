@@ -439,7 +439,7 @@ nav > ul > li > ul {
   background: var(--aft);
   border-top: 1px solid var(--aft2);
   border-bottom: 1px solid var(--aft2);
-  width: 100%;
+  width: calc(100% - 0.4rem)
   left: 0;
   box-shadow: 0px 12px 24px -12px rgb(0 0 0 / 80%);
   padding: 1rem 0.2rem;
