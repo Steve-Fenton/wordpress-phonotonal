@@ -117,6 +117,7 @@ $title_parts[] = get_bloginfo('name');
 	<meta name="viewport" content="width=device-width" />
 	<meta name="author" content="<?php echo $author_name ?>">
 	<meta name="theme-color" content="#34a4ba"/>
+	<link rel="preload" href="/wp-content/themes/phonotonal/font/roboto-condensed.ttf" as="font" type="font/woff2" crossorigin>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
