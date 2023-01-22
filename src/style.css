@@ -48,7 +48,7 @@ html {
 /* Fonts */
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "r-condensed";
   font-style: normal;
   font-weight: normal;
