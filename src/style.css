@@ -29,6 +29,7 @@ Text Domain: phonotonal
 
 html {
   box-sizing: border-box;
+  scroll-padding: 50px;
 }
 
 *,
