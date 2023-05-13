@@ -106,12 +106,21 @@ blockquote {
   padding: 1em;
 }
 
-blockquote:before {
+blockquote::before {
   color: var(--link);
   content: open-quote;
   font-size: 8rem;
   position: absolute;
   font-style: italic;
+}
+
+blockquote::after {
+  color: var(--link);
+  content: close-quote;
+  font-size: 8rem;
+  position: absolute;
+  font-style: italic;
+  visibility: hidden;
 }
 
 blockquote cite {
