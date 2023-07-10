@@ -367,7 +367,7 @@ footer li a {
 }
 
 .footer-legal {
-  padding: 2rem 1rem;
+  padding: 0rem 1rem 3rem 1rem;
   text-align: center;
 }
 
@@ -967,9 +967,8 @@ ul.post-categories li a:focus,
 
 /* Social Icons */
 .social-icons ul {
-  padding: 0 0 3rem 0;
-  display: grid;
-  grid-template-columns: 40px 40px 40px;
+  padding: 2rem 0;
+  display: flex;
   justify-content: center;
   list-style: none;
 }
@@ -985,6 +984,7 @@ ul.post-categories li a:focus,
   display: block;
   fill: var(--funk);
   padding: 5px;
+  border-bottom: none;
 }
 
 .social-icons ul li a:hover,
