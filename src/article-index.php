@@ -50,7 +50,7 @@
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="funky-title" data-destination="<?php the_permalink(); ?>">
 			    <div class="funky-image">
-					<img src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> />
+					<img src="<?php the_post_thumbnail_url('thumbnail'); ?>" style="view-transition-name: post-img-<?php echo get_the_ID() ?>" alt="<?php echo $alt ?>"<?php echo $lazy ?> />
 				</div>
 				<h2>
 					<a href="<?php the_permalink(); ?>">
