@@ -23,6 +23,10 @@ Text Domain: phonotonal
   --blocktext: #BBB;
   --overlayaft: rgba(0, 0, 0, 0.5);
   --overlayfore: #D5D5D5;
+
+  --angle: -5deg;
+  --skew-margin: calc(100vw * 0.05);
+  --skew-padding: var(--skew-margin)
 }
 
 /* FentonReset */
@@ -356,9 +360,25 @@ footer li a {
 }
 
 .footer-search {
-  background-color: var(--aft2);
-  margin: 1em 0 0 0;
+  margin: var(--skew-margin) 0 var(--skew-margin) 0;
+  padding: var(--skew-padding) 0 var(--skew-padding) 0;
   text-align: center;
+  position: relative;
+}
+
+.footer-search:before {
+  background-color: var(--aft2);
+  content: '';
+  transform: skewY(var(--angle));
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform-origin: 50% 0;
+  outline: 1px solid transparent;
+  backface-visibility: hidden;
+  z-index: -1;
 }
 
 .footer-search form {
@@ -571,8 +591,24 @@ strong {
   grid-template-rows: 1fr;
   grid-template-areas:
     ". . .";
+  margin: var(--skew-margin) 0;
+  padding: var(--skew-padding) 2rem var(--skew-padding) 2rem;
+  position: relative;
+}
+
+.footer-grid:before {
+  content: '';
   background-color: #111;
-  padding: 0 2em 2em 2em;
+  transform: skewY(var(--angle));
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform-origin: 50% 0;
+  outline: 1px solid transparent;
+  backface-visibility: hidden;
+  z-index: -1;
 }
 
 .footer-grid > div {
