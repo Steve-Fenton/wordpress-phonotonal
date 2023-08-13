@@ -448,7 +448,6 @@ nav .icon-group {
 }
 
 nav {
-  border-bottom: 1px solid var(--aft2);
   background-color: var(--aft);
   text-transform: lowercase;
 }
@@ -466,7 +465,7 @@ nav > ul > li {
 nav > ul > li > a,
 nav > ul > li > span > a {
   display: inline-block;
-  padding: 0.3em 1.3em;
+  padding: 0.3em 0.3em 0.3em 1.3em;
 }
 
 nav > ul > li > span > svg {
@@ -475,29 +474,30 @@ nav > ul > li > span > svg {
   transition: transform 200ms ease-in-out; 
 }
 
+nav > ul > li > span > svg:focus {
+  outline: dotted var(--link) 1px;
+}
+
 nav > ul > li > span > svg.active {
   transform-origin: 50% 50%;
   transform: rotate(180deg);
 }
 
 nav > ul > li > ul {
-  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
   pointer-events: none;
   position: absolute;
   z-index: 999;
   background: var(--aft);
-  border-top: 1px solid var(--aft2);
-  border-bottom: 1px solid var(--aft2);
-  width: calc(100% - 0.4rem);
+  width: 100%;
   left: 0;
   box-shadow: 0px 12px 24px -12px rgb(0 0 0 / 80%);
-  padding: 1rem 0.2rem;
-  transition: opacity 200ms ease-in-out;
+  transition: max-height 200ms ease-in-out;
 }
 
-/* nav > ul > li:hover > ul, */
 nav > ul > li:focus-within > ul {
-  opacity: 1;
+  max-height: 1000px;
   pointer-events: unset;
 }
 
@@ -505,6 +505,14 @@ nav > ul > li > ul > li {
   display: block;
   max-width: 20rem;
   margin: 0 auto;
+}
+
+nav > ul > li > ul > li:first-child {
+  margin-block-start: 2rem;
+}
+
+nav > ul > li > ul > li:last-child {
+  margin-block-end: 2rem;
 }
 
 strong {

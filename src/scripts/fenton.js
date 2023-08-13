@@ -23,6 +23,12 @@ setClickableBlocks();
 // Navigation
 
 function enhanceNavigation () {
+    function close() {
+        if (this.classList.contains('active')) {
+            this.blur();
+        }
+    }
+
     document.querySelectorAll('.icon-group svg').forEach((icon) => {
         icon.addEventListener('focus', function(e) {
             window.setTimeout(() => icon.classList.add('active'), 400);
@@ -32,11 +38,7 @@ function enhanceNavigation () {
             icon.classList.remove('active');
         });
 
-        icon.addEventListener('click', function() {
-            if (this.classList.contains('active')) {
-                this.blur();
-            }
-        });
+        icon.addEventListener('click', close);
     });
 }
 
