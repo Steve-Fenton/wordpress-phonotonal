@@ -20,6 +20,28 @@ function handleClickableBlock(e) {
 
 setClickableBlocks();
 
+// Navigation
+
+function enhanceNavigation () {
+    document.querySelectorAll('.icon-group svg').forEach((icon) => {
+        icon.addEventListener('focus', function(e) {
+            window.setTimeout(() => icon.classList.add('active'), 400);
+        });
+
+        icon.addEventListener('blur', function(e) {
+            icon.classList.remove('active');
+        });
+
+        icon.addEventListener('click', function() {
+            if (this.classList.contains('active')) {
+                this.blur();
+            }
+        });
+    });
+}
+
+enhanceNavigation();
+
 // Article animation
 var articleOptions = {
     root: null,

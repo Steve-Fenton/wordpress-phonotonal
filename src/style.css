@@ -441,6 +441,12 @@ math mo {
   color: var(--fore);
 }
 
+nav .icon-group {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
 nav {
   border-bottom: 1px solid var(--aft2);
   background-color: var(--aft);
@@ -454,11 +460,24 @@ nav ul {
 
 nav > ul > li {
   display: inline-block;
+  fill: var(--link);
 }
 
-nav > ul > li > a {
+nav > ul > li > a,
+nav > ul > li > span > a {
   display: inline-block;
   padding: 0.3em 1.3em;
+}
+
+nav > ul > li > span > svg {
+  padding: 0.3em;
+  opacity: 0.5;
+  transition: transform 200ms ease-in-out; 
+}
+
+nav > ul > li > span > svg.active {
+  transform-origin: 50% 50%;
+  transform: rotate(180deg);
 }
 
 nav > ul > li > ul {
@@ -476,7 +495,8 @@ nav > ul > li > ul {
   transition: opacity 200ms ease-in-out;
 }
 
-nav > ul > li:hover > ul, nav > ul > li:focus-within > ul {
+/* nav > ul > li:hover > ul, */
+nav > ul > li:focus-within > ul {
   opacity: 1;
   pointer-events: unset;
 }
