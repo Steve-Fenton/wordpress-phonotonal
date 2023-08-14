@@ -844,6 +844,11 @@ strong {
   box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.8);
   padding: 1rem;
   will-change: top;
+  font-size: 0.9rem;
+}
+
+.listing-item p {
+  min-height: 6.8em;
 }
 
 .listing-item.init {

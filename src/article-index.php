@@ -69,6 +69,10 @@
 			<div data-destination="<?php the_permalink(); ?>">
 				<?php the_excerpt(); ?>
 			</div>
+
+			<div>
+				<a href="<?php the_permalink(); ?>" class="button">Read <?php echo $title; ?></a>
+			</div>
 			
 		</article>
 
