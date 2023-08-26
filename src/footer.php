@@ -7,7 +7,7 @@
 		<h3 class="hidden">Search</h3>
 		<form role="search" method="get" class="search-form" action="/">
 			<label><span class="screen-reader-text">Search for:</span>
-			<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+			<input type="search" class="search-field" placeholder="Search …" value="" name="s" id="search">
 			</label>
 			<input type="submit" value="Go" />
 		</form>

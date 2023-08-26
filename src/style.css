@@ -75,6 +75,7 @@ body {
 a {
   border-radius: 2px;
   color: var(--link);
+  stroke: var(--link);
   text-decoration: none;
   transition: all 500ms ease;
 }
@@ -83,6 +84,8 @@ a:hover,
 a:focus {
   background-color: var(--link);
   color: var(--aft);
+  fill: var(--link);
+  stroke: var(--aft);
 }
 
 a.button {
@@ -465,7 +468,7 @@ nav > ul > li {
 nav > ul > li > a,
 nav > ul > li > span > a {
   display: inline-block;
-  padding: 0.3em 0.3em 0.3em 1.3em;
+  padding: 0.3em 0.3em 0.3em 0.8em;
 }
 
 nav > ul > li > span > svg {
@@ -513,6 +516,15 @@ nav > ul > li > ul > li:first-child {
 
 nav > ul > li > ul > li:last-child {
   margin-block-end: 2rem;
+}
+
+.search-icon a {
+  padding: 0 0.8em;
+}
+
+.search-icon svg {
+  position: relative;
+  top: 6px;
 }
 
 strong {
