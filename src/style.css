@@ -469,21 +469,27 @@ nav > ul > li > a,
 nav > ul > li > span > a {
   display: inline-block;
   padding: 0.3em 0.3em 0.3em 0.8em;
+  border-radius: 2px 0 0 2px;
 }
 
 nav > ul > li > span > svg {
-  padding: 0.3em;
+  padding: 0.65em 0.3em 0.65em 0.3em;
   opacity: 0.5;
   transition: transform 200ms ease-in-out; 
+  border-radius: 0 2px 2px 0;
+  cursor: pointer;
 }
 
-nav > ul > li > span > svg:focus {
-  outline: dotted var(--link) 1px;
+nav > ul > li > span > svg:focus,
+nav > ul > li > span > svg:hover {
+  fill: var(--aft);
+  background-color: var(--link);
 }
 
 nav > ul > li > span > svg.active {
   transform-origin: 50% 50%;
   transform: rotate(180deg);
+  border-radius: 2px 0 0 2px;
 }
 
 nav > ul > li > ul {
