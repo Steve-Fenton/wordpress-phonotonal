@@ -622,6 +622,14 @@ strong {
   margin-top: 1em;
 }
 
+.interest .article-grid {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 18rem));
+  justify-content: center;
+  margin-top: 1em;
+}
+
 .content-grid {
   display: grid;
   gap: 0 2rem;
@@ -942,7 +950,8 @@ strong {
   z-index: 99999999;
 }
 
-.single-item article.post h2 {
+.single-item article.post h2,
+.interest h2 {
   text-align: center;
 }
 

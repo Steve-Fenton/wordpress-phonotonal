@@ -9,15 +9,16 @@ get_header();
 $tag = get_queried_object();
 ?>
 <!-- *tag* -->
-	<main>
+	<main class="interest">
 		<h1><?php single_tag_title(); ?></h1>
-		<?php get_template_part('article', 'index'); ?>
 		<div class="constrain-more">
 			<h2 id="about">About <?php single_tag_title(); ?></h3>
-			<p>You can subscribe to the <a href="/interest/<?php echo $tag->slug ?>/feed"><?php echo $tag->name ?> tag micro-feed</a>.</p>
 			<div>
 				<?php echo str_replace('<br />', '<br /><br />', tag_description($tag)) ?>
 			</div>
+			<p>You can subscribe to the <a href="/interest/<?php echo $tag->slug ?>/feed"><?php echo $tag->name ?> tag micro-feed</a>.</p>
 		</div>
+		<h2><?php single_tag_title(); ?> Articles</h2>
+		<?php get_template_part('article', 'index'); ?>
 	</main>
 <?php get_footer(); ?>
