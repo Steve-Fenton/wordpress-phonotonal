@@ -224,6 +224,18 @@
       ],
       "datePublished": "<?php the_time('Y-m-d') ?>",
       "dateModified": "<?php the_modified_date('Y-m-d') ?>",
+	  <?php
+	  if ($model->categories) {
+		$sections = '[';
+        foreach($model->categories as $cat) {
+			$sections = $sections . '"' . $cat->cat_name . '",';
+        }
+		$sections = rtrim($sections, ',') . ']';
+
+		echo '"articleSection": ' . $sections . ',';
+      }
+	  ?>
+	  
       "author": {
         "@type": "Person",
         "name": "<?php echo $model->user_name ?>",

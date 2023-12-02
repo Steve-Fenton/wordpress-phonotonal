@@ -362,8 +362,7 @@ aside li a {
 }
 
 .post ol.jump-links li {
-  display: inline-block;
-  margin-inline-end: 0.6rem;
+
 }
 
 .post ol.jump-links li > a::before {
