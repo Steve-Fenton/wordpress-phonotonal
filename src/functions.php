@@ -83,18 +83,20 @@ function fenton_change_author_role(){
 }
 add_action('init', 'fenton_change_author_role');
 
-// function remove_image_size_attributes($image) {
-//     return preg_replace( '/(width|height)="\d*"\s/', '', $image);
-// }
-// add_filter('post_thumbnail_html', 'remove_image_size_attributes', 10);
-// add_filter('image_send_to_editor', 'remove_image_size_attributes', 10);
+// Adds IDs to headings
+function auto_id_headings( $content ) {
 
-// remove_action('wp_head', 'print_emoji_detection_script', 7);
-// remove_action('admin_print_scripts', 'print_emoji_detection_script');
-// remove_action('wp_print_styles', 'print_emoji_styles');
-// remove_action('admin_print_styles', 'print_emoji_styles'); 
+	$content = preg_replace_callback( '/(\<h[1-6](.*?))\>(.*)(<\/h[1-6]>)/i', function( $matches ) {
+		if ( ! stripos( $matches[0], 'id=' ) ) :
+			$matches[0] = $matches[1] . $matches[2] . ' id="' . sanitize_title( $matches[3] ) . '">' . $matches[3] . $matches[4];
+		endif;
+		return $matches[0];
+	}, $content );
 
+    return $content;
 
+}
+add_filter('the_content', 'auto_id_headings');
 
 // Add Image to RSS
 function fenton_rss_post_thumbnail( $content ) {

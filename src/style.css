@@ -33,7 +33,7 @@ Text Domain: phonotonal
 
 html {
   box-sizing: border-box;
-  scroll-padding: 50px;
+  scroll-padding: 120px;
   quotes: "“" "”" "‘" "’";
 }
 
@@ -348,6 +348,28 @@ aside li a {
   border-bottom: 1px dashed var(--fore);
   display: block;
   padding: 0.5rem;
+}
+
+/* Jump Links */
+.post ol.jump-links {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.post ol.jump-links::before {
+  content: 'Jump to...';
+  display: block;
+}
+
+.post ol.jump-links li {
+  display: inline-block;
+  margin-inline-end: 0.6rem;
+}
+
+.post ol.jump-links li > a::before {
+  content: '>';
+  margin-inline-end: 0.6rem;
+  color: var(--funk);
 }
 
 /* Footer */

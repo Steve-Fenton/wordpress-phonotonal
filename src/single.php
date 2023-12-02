@@ -25,6 +25,25 @@
 	$model->user_link = get_author_posts_url($model->user_id);
 	$model->user_avatar = get_field('avatar', 'user_' . $model->user_id);
 
+	// Heading list
+	//$model->headings = array();
+	$htmlDoc = new DOMDocument();
+	$htmlDoc->loadHTML($model->content);
+	$xpath = new DOMXpath($htmlDoc);
+	$headings = $xpath->query('//h1 | //h2 | //h3');
+	$model->jump_link_count = 0;
+	$jump_links = '<ol class="jump-links">';
+	foreach($headings as $heading) {
+		$heading_id = $heading->getAttribute('id');
+		if (empty($heading_id) === false) {
+			$model->jump_link_count++;
+			$heading_text = $heading->textContent;
+			$jump_links = $jump_links . '<li><a href="#' . $heading_id . '">' . $heading_text . '</a></li>';
+		}
+	}
+	$jump_links = $jump_links . '</ol>';
+	$model->jump_links = $jump_links;
+
 	// Tags
 	$model->tags = get_the_tags();
 	$model->tags_text = fenton_get_text_tags($model->tags);
@@ -70,6 +89,10 @@
 
 						<img class="lead-img" src="<?php echo $model->thumbnail_image ?>" style="view-transition-name: post-img-<?php echo get_the_ID() ?>" alt="<?php echo $model->thumbnail_alt ?>" width="560" height="560" />
 						<h1><?php echo $model->post_title ?></h1>
+
+						<?php if ($model->jump_link_count > 0) {
+							echo $model->jump_links;
+						} ?>
 						
 						<?php echo $model->content ?>
 
