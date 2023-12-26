@@ -932,14 +932,15 @@ strong {
 }
 
 .bgfonk {
-  background-size: 100% auto;
+  background-size: auto 80%;
   background-repeat: no-repeat;
+  background-position-x: 50%;
   background-position-y: 5em;
 }
 
 .bgfonk .single-item {
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
 }
 
 .single-item article.post {
