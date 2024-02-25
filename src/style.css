@@ -103,6 +103,11 @@ a.button:focus {
   box-shadow: inset 400px 0 0 0 var(--funk);
 }
 
+.article-grid a.button {
+  max-height: 2em;
+  overflow: hidden;
+}
+
 blockquote {
   background: var(--blockquote);
   border-left: 1em solid var(--funk);
