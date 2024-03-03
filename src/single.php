@@ -32,7 +32,7 @@
 	$xpath = new DOMXpath($htmlDoc);
 	$headings = $xpath->query('//h1 | //h2 | //h3');
 	$model->jump_link_count = 0;
-	$jump_links = '<ol class="jump-links">';
+	$jump_links = '<details><summary>Jump to...</summary><ol class="jump-links">';
 	foreach($headings as $heading) {
 		$heading_id = $heading->getAttribute('id');
 		if (empty($heading_id) === false) {
@@ -41,7 +41,7 @@
 			$jump_links = $jump_links . '<li><a href="#' . $heading_id . '">' . $heading_text . '</a></li>';
 		}
 	}
-	$jump_links = $jump_links . '</ol>';
+	$jump_links = $jump_links . '</ol></details>';
 	$model->jump_links = $jump_links;
 
 	// Tags

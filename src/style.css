@@ -141,6 +141,21 @@ blockquote cite {
   margin: 1rem 0 0 0;
 }
 
+details {
+  max-height: 2em;
+  max-height: 1lh;
+  transition: max-height 400ms ease-out;
+}
+
+details[open] {
+  max-height: 2000px;
+}
+
+details summary {
+  cursor: pointer;
+  color: var(--link)
+}
+
 dl dt {
   font-weight: bold;
 }
@@ -359,15 +374,6 @@ aside li a {
 .post ol.jump-links {
   list-style: none;
   margin: 1rem 0;
-}
-
-.post ol.jump-links::before {
-  content: 'Jump to...';
-  display: block;
-}
-
-.post ol.jump-links li {
-
 }
 
 .post ol.jump-links li > a::before {
