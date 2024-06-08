@@ -480,6 +480,12 @@ nav .icon-group {
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
+  border-radius: 2px;
+}
+
+nav .icon-group:hover,
+nav .icon-group:focus-within {
+  background-color: var(--aft2);
 }
 
 nav {
@@ -558,6 +564,7 @@ nav > ul > li > ul > li:last-child {
 
 .search-icon a {
   padding: 0 0.8em;
+  border-radius: 2px;
 }
 
 .search-icon svg {
