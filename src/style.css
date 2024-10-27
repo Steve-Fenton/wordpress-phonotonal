@@ -968,6 +968,7 @@ strong {
   margin: 1rem auto 2rem auto;
   max-width: 35rem;
   padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 @media (max-width: 625px) {
