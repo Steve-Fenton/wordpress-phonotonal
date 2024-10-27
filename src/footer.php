@@ -73,9 +73,12 @@
 	// 21 years of...
 	$quotes = array(
 		'noise',
-		'half-baked philosophical drivel and nonsensical tirades',
+		'half-baked philosophical drivel',
+		'nonsensical tirades',
 		'acts of faith in the future',
-		'discordancy'
+		'discordancy',
+		'wonderful disasters',
+		'rejecting authority'
 	);
 	?>
 	<div class="footer-legal">&copy; 2001-<?php echo date("Y"); ?> Phonotonal.
