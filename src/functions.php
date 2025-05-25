@@ -83,6 +83,18 @@ function fenton_change_author_role(){
 }
 add_action('init', 'fenton_change_author_role');
 
+// Remove block class from headings
+function remove_wp_block_heading_class_from_headings($content) {
+    // Use regular expression to find and remove the class="wp-block-heading" from h1 to h6 tags
+    $pattern = '/<(h[1-6])\s+class="wp-block-heading"(.*?)>/i';
+    $replacement = '<$1$2>';
+    $content = preg_replace($pattern, $replacement, $content);
+    return $content;
+}
+
+// Add the filter to 'the_content' hook
+add_filter('the_content', 'remove_wp_block_heading_class_from_headings');
+
 // Adds IDs to headings
 function auto_id_headings( $content ) {
 
