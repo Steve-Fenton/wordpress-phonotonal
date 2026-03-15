@@ -123,45 +123,46 @@ $title_parts[] = get_bloginfo('name');
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
-<header class="constrain">
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="title"><img src="<?php echo get_template_directory_uri().'/lock-up-600.webp'; ?>" alt="<?php bloginfo( 'name' ); ?>" width="600" height="170" /></a>
-</header>
-<nav class="sticky">
-	<ul>
-	<?php 			
-	$slugs = array('music', 'words', 'culture');
-	foreach ($slugs as $slug) :
-		$c = get_category_by_slug($slug); 
-		$args = array('orderby' => 'name', 'parent' => $c->term_id);
-		$categories = get_categories($args);
-	?>
-		<li><span class="icon-group"><a href="<?php echo get_category_link($c) ?>"><?php echo $c->name ?></a>
-		<svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330" xml:space="preserve" tabindex="0">
-		  <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
-			c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
-			s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
-		</svg></span>
-		<?php if ($categories) : ?>
+<div class="header-container">
+	<header>
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="title"><img src="<?php echo get_template_directory_uri().'/lock-up-600.webp'; ?>" alt="<?php bloginfo( 'name' ); ?>" width="600" height="170" /></a>
+	</header>
+	<nav>
 		<ul>
-			<li><a href="<?php echo get_category_link($c) ?>" class="button">All <?php echo $c->name ?></a></li>
-		<?php foreach ($categories as $sub) : ?>
-			<li><a href="<?php echo get_category_link($sub) ?>" class="button"><?php echo $sub->name ?></a></li>
-		<?php endforeach; ?>
+		<?php 			
+		$slugs = array('music', 'words', 'culture');
+		foreach ($slugs as $slug) :
+			$c = get_category_by_slug($slug); 
+			$args = array('orderby' => 'name', 'parent' => $c->term_id);
+			$categories = get_categories($args);
+		?>
+			<li><span class="icon-group"><a href="<?php echo get_category_link($c) ?>"><?php echo $c->name ?></a>
+			<svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330" xml:space="preserve" tabindex="0">
+			<path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+				c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+				s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+			</svg></span>
+			<?php if ($categories) : ?>
+			<ul>
+				<li><a href="<?php echo get_category_link($c) ?>" class="button">All <?php echo $c->name ?></a></li>
+			<?php foreach ($categories as $sub) : ?>
+				<li><a href="<?php echo get_category_link($sub) ?>" class="button"><?php echo $sub->name ?></a></li>
+			<?php endforeach; ?>
+			</ul>
+			<?php endif; ?>
+			</li>
+		<?php
+		endforeach;
+		?>
+		<li class="search-icon"><a href="#search">
+		<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+			<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+			<circle cx="10" cy="10" r="7"></circle>
+			<line x1="21" y1="21" x2="15" y2="15"></line>
+		</svg>
+		</a></li>
 		</ul>
-		<?php endif; ?>
-	 	</li>
-	<?php
-	endforeach;
-	?>
-	<li class="search-icon"><a href="#search">
-	<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
-		<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-		<circle cx="10" cy="10" r="7"></circle>
-		<line x1="21" y1="21" x2="15" y2="15"></line>
-	</svg>
-	</a></li>
-	</ul>
-</nav>
+	</nav>
+</div>
 
 <div>
