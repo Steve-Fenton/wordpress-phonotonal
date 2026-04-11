@@ -285,8 +285,8 @@ footer h4 {
   width: 100%;
 }
 
-.funky-title>.funky-image:hover img,
-funky-title>.funky-image:focus img {
+.listing-item:hover .funky-title>.funky-image img,
+.listing-item:focus-within .funky-title>.funky-image img {
   filter: unset;
   transform: scale(1.2) rotate(0.01turn);
 }
@@ -316,8 +316,8 @@ funky-title>.funky-image:focus img {
 /* Don't animate the image for these users */
 @media (prefers-reduced-motion) {
 
-  .funky-title>a:hover img,
-  funky-title>a:focus img {
+  .listing-item:hover .funky-title>.funky-image img,
+  .listing-item:focus-within .funky-title>.funky-image img {
     transform: scale(1);
     filter: unset;
   }
