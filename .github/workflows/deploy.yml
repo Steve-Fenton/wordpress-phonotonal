@@ -20,5 +20,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./src/
-          server-dir: './'
-          dry-run: true
+          server-dir: './upload-test/'
