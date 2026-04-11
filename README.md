@@ -1,4 +1,8 @@
-# wordpress-phonotonal
+# Phonotonal Theme
+
+## GitHub Action
+
+Set up a custom FTP account with the home directory set to the theme folder, i.e., `httpdocs/wp-content/themes/phonotonal/`. This guarantees the upload won't overwrite any files outside of the theme folder. This is **super important** as you want to limit the scope and permissions of the FTP account you use.
 
 ## Theme Requirements
 
