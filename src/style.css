@@ -476,18 +476,6 @@ math mo {
   color: var(--fore);
 }
 
-nav .icon-group {
-  display: grid;
-  grid-template-columns: auto auto;
-  align-items: center;
-  border-radius: 2px;
-}
-
-nav .icon-group:hover,
-nav .icon-group:focus-within {
-  background-color: var(--aft2);
-}
-
 nav {
   text-transform: lowercase;
 }
@@ -506,19 +494,10 @@ nav>ul>li {
   fill: var(--link);
 }
 
-nav>ul>li>a,
-nav>ul>li>span>a {
+nav>ul>li>a {
   display: inline-block;
-  padding: 0.3em 0.3em 0.3em 0.8em;
-  border-radius: 2px 0 0 2px;
-}
-
-nav>ul>li>span>svg {
-  padding: 0.65em 0.3em 0.65em 0.3em;
-  opacity: 0.5;
-  transition: transform 200ms ease-in-out;
-  border-radius: 0 2px 2px 0;
-  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  margin-right: 1rem;
 }
 
 nav>ul>li>span>svg:focus,
