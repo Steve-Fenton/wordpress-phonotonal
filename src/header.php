@@ -134,7 +134,7 @@ $title_parts[] = get_bloginfo('name');
 		foreach ($slugs as $slug) :
 			$c = get_category_by_slug($slug);
 		?>
-			<li><span class="icon-group"><a href="<?php echo get_category_link($c) ?>"><?php echo $c->name ?></a></li>
+			<li><a href="<?php echo get_category_link($c) ?>"><?php echo $c->name ?></a></li>
 		<?php
 		endforeach;
 		?>
