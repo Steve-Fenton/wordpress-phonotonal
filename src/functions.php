@@ -36,24 +36,11 @@ function fenton_remove_type_attribute($tag, $handle) {
 add_filter('style_loader_tag', 'fenton_remove_type_attribute', 10, 2);
 add_filter('script_loader_tag', 'fenton_remove_type_attribute', 10, 2);
 
-function deregister_scripts() {
-    global $wp_scripts, $wp_styles;
-
-    foreach($wp_scripts->registered as $registered)
-        if(strpos($registered->src,'/wp-admin/')===FALSE)
-            wp_deregister_script($registered->handle);
-
-    foreach($wp_styles->registered as $registered)
-        if(strpos($registered->src,'/wp-admin/')===FALSE)
-            wp_deregister_style($registered->handle);
-
-	// get the theme directory style.css and link to it in the header
-	wp_enqueue_style('fenton-style', get_template_directory_uri() . '/style.css', '10000', null);
-
-	// add theme scripts
-	wp_enqueue_script('fenton-script', get_template_directory_uri() . '/scripts/fenton.js', array(), null, true );
+function fenton_enqueue_assets() {
+	wp_enqueue_style('fenton-style', get_template_directory_uri() . '/style.css', array(), FENTON_VERSION);
+	wp_enqueue_script('fenton-script', get_template_directory_uri() . '/scripts/fenton.js', array(), FENTON_VERSION, true);
 }
-add_action('wp_enqueue_scripts', 'deregister_scripts');
+add_action('wp_enqueue_scripts', 'fenton_enqueue_assets');
 
 function my_theme_add_editor_styles() {
     add_editor_style(get_template_directory_uri() . 'style.css');
